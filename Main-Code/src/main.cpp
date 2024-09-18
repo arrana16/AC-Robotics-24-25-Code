@@ -1,7 +1,10 @@
 #include "main.h"
-#include "include/drivetrain/drivetrain.h"
 
-using namespace Drivetrain;
+#include "include/drivetrain/drivetrain.h"
+#include "include/auton/auton.h"
+#include "include/controller/controller.h"
+
+using namespace Controller;
 
 /**
  * A callback function for LLEMU's center button.
@@ -66,7 +69,10 @@ void competition_initialize() {}
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
-void autonomous() {}
+void autonomous() 
+{
+	Auton::start();
+}
 
 /**
  * Runs the operator control code. This function will be started in its own task
@@ -83,14 +89,14 @@ void autonomous() {}
  */
 void opcontrol()
 {
-    chassis.calibrate();
+    Drivetrain::chassis.calibrate();
+
+	ControllerInstance controller = ControllerInstance();
 	
-    pros::Task screen_task([&]() {
-        while (true) {
-            pros::lcd::print(0, "X: %f", chassis.getPose().x);
-            pros::lcd::print(1, "Y: %f", chassis.getPose().y);
-            pros::lcd::print(2, "Theta: %f", chassis.getPose().theta);
-            pros::delay(20);
-        }
-    });
+    while (true)
+	{
+		controller.listenAnalog();
+
+		pros::delay(20);
+	}
 }
