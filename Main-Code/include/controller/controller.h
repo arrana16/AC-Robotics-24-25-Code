@@ -1,6 +1,6 @@
 #pragma once
 
-#include "lemlib/api.hpp"
+#include "main.h"
 
 namespace Controller
 {
@@ -13,11 +13,11 @@ namespace Controller
             ControllerInstance();
         private:
             pros::Controller controllerMaster;
-            int lasty;
-            int limit;
-            double yexp;
-            double rotexp;
-            bool PTO;
-            int liftAngle;
+            int lasty = 2;
+            int limit = 2;
+            double yexp = 2.12;
+            double rotexp = 5;
+            bool PTO = false;
+            int liftAngle = 186;
     };
 }

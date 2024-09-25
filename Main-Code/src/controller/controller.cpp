@@ -1,17 +1,6 @@
-#include "include/controller/controller.h"
+#include "main.h"
 
 using namespace Controller;
-
-ControllerInstance::ControllerInstance()
-    : controllerMaster(pros::E_CONTROLLER_MASTER),
-      lasty(0),
-      limit(2),
-      yexp(2.12),
-      rotexp(5),
-      PTO(false),
-      liftAngle(186)
-{
-}
 
 void ControllerInstance::listenAnalog()
 {

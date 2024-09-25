@@ -1,9 +1,5 @@
 #include "main.h"
 
-#include "include/drivetrain/drivetrain.h"
-#include "include/auton/auton.h"
-#include "include/controller/controller.h"
-
 using namespace Controller;
 
 /**
@@ -71,7 +67,6 @@ void competition_initialize() {}
  */
 void autonomous() 
 {
-	Auton::start();
 }
 
 /**
@@ -89,8 +84,8 @@ void autonomous()
  */
 void opcontrol()
 {
+	// Initialize
     Drivetrain::chassis.calibrate();
-
 	ControllerInstance controller = ControllerInstance();
 	
     while (true)

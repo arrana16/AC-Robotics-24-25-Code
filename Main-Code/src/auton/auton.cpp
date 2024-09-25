@@ -1,6 +1,3 @@
-#include "include/auton/auton.h"
+#include "main.h"
 
-void Auton::start()
-{
-    
-}
+using namespace Drivetrain;
