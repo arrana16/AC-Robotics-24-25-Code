@@ -11,8 +11,8 @@ namespace Timer
     public:
         Timer_C();
         void reset();
-        const uint32_t getElapsedTime();
-        double const getElapsedTimeSeconds();
-        const bool hasPassed(uint32_t milliseconds);
+        uint32_t getElapsedTime();
+        double getElapsedTimeSeconds();
+        bool hasPassed(uint32_t milliseconds);
     };
 }

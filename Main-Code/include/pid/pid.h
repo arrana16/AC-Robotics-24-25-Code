@@ -1,7 +1,7 @@
 #pragma once
 
 #include "main.h"
-
+ 
 namespace PID
 {
     class PID_C
@@ -13,8 +13,7 @@ namespace PID
         bool m_slew = false;
         double m_sRate = 0;
 
-        // okapi::Timer m_timer;
-        // Make a custom timer class based on pros
+        Timer::Timer_C m_timer; // Custom timer class instance instead of using okapi
         double m_error = 0;
         double m_lastError = 0;
         double m_lastTime = 0;

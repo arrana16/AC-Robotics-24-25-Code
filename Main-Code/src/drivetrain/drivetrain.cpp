@@ -2,15 +2,17 @@
 
 using namespace Drivetrain;
 
-// Motor groups
-pros::MotorGroup leftMotors({1, 2, 3}, pros::MotorGearset::blue);
-pros::MotorGroup rightMotors({4, 5, 6}, pros::MotorGearset::blue);
+/* Motors */
+pros::MotorGroup leftMotors({1, 2, 3}, pros::MotorGearset::red); // Change cartridge
+pros::MotorGroup rightMotors({4, 5, 6}, pros::MotorGearset::red);
+pros::MotorGroup leftPTO({1, 2});
+pros::MotorGroup rightPTO({3, 4});
 
 // Drivetrain
 lemlib::Drivetrain drivetrain
 (
-    &Drivetrain::leftMotors,             // left motor group
-    &Drivetrain::rightMotors,            // right motor group
+    &Drivetrain::leftMotors,  // left motor group
+    &Drivetrain::rightMotors, // right motor group
     10,                       // 10 inch track width
     lemlib::Omniwheel::NEW_4, // using new 4" omnis
     360,                      // drivetrain rpm is 360
@@ -70,4 +72,10 @@ void Movement::simpleDrive(int& y, int& turn)
 {
     Drivetrain::leftMotors.move(y + turn);
     Drivetrain::rightMotors.move(y - turn);
-}  
+}
+
+void Movement::simplePTODrive(int& y, int& turn)
+{
+    Drivetrain::leftPTO.move(y + turn);
+    Drivetrain::rightPTO.move(y - turn);
+}

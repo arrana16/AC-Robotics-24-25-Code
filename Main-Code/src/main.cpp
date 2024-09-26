@@ -86,7 +86,7 @@ void opcontrol()
 {
 	// Initialize
     Drivetrain::chassis.calibrate();
-	ControllerInstance controller = ControllerInstance();
+	Controller_C controller = Controller_C();
 	
     while (true)
 	{

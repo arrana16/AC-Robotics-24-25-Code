@@ -43,6 +43,7 @@
 #include "include/controller/controller.h"
 #include "include/pid/pid.h"
 #include "include/util/timer.h"
+#include "include/util/globals.h"
 
 /**
  * You should add more #includes here

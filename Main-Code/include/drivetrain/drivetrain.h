@@ -4,9 +4,9 @@
 
 namespace Drivetrain
 {
-    // Motor groups
-    pros::MotorGroup leftMotors;
-    pros::MotorGroup rightMotors;
+    // Motors
+    pros::MotorGroup leftMotors, rightMotors;
+    pros::MotorGroup leftPTO, rightPTO;
 
     // Drivetrain
     lemlib::Drivetrain drivetrain;
@@ -27,5 +27,6 @@ namespace Drivetrain
     {
         public:
         static void simpleDrive(int& y, int& turn);
+        static void simplePTODrive(int& y, int& turn);
     };
 }

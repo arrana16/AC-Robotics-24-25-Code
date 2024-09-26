@@ -2,14 +2,8 @@
 
 using namespace Controller;
 
-void ControllerInstance::listenAnalog()
+void Controller_C::listenAnalog()
 {
-    int left = controllerMaster.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-    int right = controllerMaster.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
-
-    int y = controllerMaster.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-    int rot = controllerMaster.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
-
     if (controllerMaster.get_digital(pros::E_CONTROLLER_DIGITAL_R1))
     {
     }
@@ -76,6 +70,8 @@ void ControllerInstance::listenAnalog()
     {
         y = y - abs(rot) * 0.2;
     }
+
+    Drivetrain::Movement::simpleDrive(y, rot);
 
     lasty = y;
 }
