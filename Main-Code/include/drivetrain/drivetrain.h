@@ -5,22 +5,24 @@
 namespace Drivetrain
 {
     // Motors
-    pros::MotorGroup leftMotors, rightMotors;
-    pros::MotorGroup leftPTO, rightPTO;
+    extern pros::MotorGroup leftMotors;
+    extern pros::MotorGroup rightMotors;
+    extern pros::MotorGroup leftPTO;
+    extern pros::MotorGroup rightPTO;
 
     // Drivetrain
-    lemlib::Drivetrain drivetrain;
-    lemlib::Chassis chassis;
-    lemlib::ControllerSettings lateralController;
-    lemlib::ControllerSettings angularController;
+    extern lemlib::Drivetrain drivetrain;
+    extern lemlib::Chassis chassis;
+    extern lemlib::ControllerSettings lateralController;
+    extern lemlib::ControllerSettings angularController;
 
     // Odometry
-    pros::Imu imu;
-    lemlib::OdomSensors sensors;
-    pros::Rotation horizontalEncoder;
-    pros::adi::Encoder verticalEncoder;
-    lemlib::TrackingWheel horizontalTrackingWheel;
-    lemlib::TrackingWheel verticalTrackingWheel;
+    extern pros::Imu imu;
+    extern lemlib::OdomSensors sensors;
+    extern pros::Rotation horizontalEncoder;
+    extern pros::adi::Encoder verticalEncoder;
+    extern lemlib::TrackingWheel horizontalTrackingWheel;
+    extern lemlib::TrackingWheel verticalTrackingWheel;
 
     // Movement
     class Movement

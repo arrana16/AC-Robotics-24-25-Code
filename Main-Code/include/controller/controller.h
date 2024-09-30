@@ -4,23 +4,23 @@
 
 namespace Controller
 {
-    class Controller_C
-    {
-        public:
-            void listenAnalog();
-            Controller_C();
-        private:
-            pros::Controller controllerMaster;
-            int lasty = 2;
-            int limit = 2;
-            double yexp = 2.12;
-            double rotexp = 5;
-            bool PTO = false;
-            int liftAngle = 186;
+    extern pros::Controller master(pros::E_CONTROLLER_MASTER);
+    extern pros::Controller partner(pros::E_CONTROLLER_PARTNER);
 
-            int left = controllerMaster.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-            int right = controllerMaster.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
-            int y = controllerMaster.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-            int rot = controllerMaster.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
-    };
+    // Controller variables
+    extern int lasty = 2;
+    extern int limit = 2;
+    extern double yexp = 2.12;
+    extern double rotexp = 5;
+    extern bool PTO = false;
+    extern int liftAngle = 186;
+
+    // Data for master
+    extern int left = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+    extern int right = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
+    extern int y = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+    extern int rot = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
+
+    // Listen for controller analog input
+    extern void listenAnalog();
 }

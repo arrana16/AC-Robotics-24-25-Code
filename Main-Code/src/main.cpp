@@ -1,7 +1,5 @@
 #include "main.h"
 
-using namespace Controller;
-
 /**
  * A callback function for LLEMU's center button.
  *
@@ -82,15 +80,15 @@ void autonomous()
  * operator control task will be stopped. Re-enabling the robot will restart the
  * task, not resume it from where it left off.
  */
+
 void opcontrol()
 {
 	// Initialize
     Drivetrain::chassis.calibrate();
-	Controller_C controller = Controller_C();
 	
     while (true)
 	{
-		controller.listenAnalog();
+		Controller::listenAnalog();
 
 		pros::delay(20);
 	}

@@ -37,13 +37,12 @@
 #include "api.h"
 #include "lemlib/api.hpp"
 
-#include "include/auton/auton.h"
-#include "include/drivetrain/drivetrain.h"
-#include "include/clamp/clamp.h"
-#include "include/controller/controller.h"
-#include "include/pid/pid.h"
-#include "include/util/timer.h"
-#include "include/util/globals.h"
+#include "util/globals.h"
+#include "util/timer.h"
+#include "pid/pid.h"
+#include "drivetrain/drivetrain.h"
+#include "controller/controller.h"
+
 
 /**
  * You should add more #includes here

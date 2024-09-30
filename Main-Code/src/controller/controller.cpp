@@ -1,41 +1,39 @@
 #include "main.h"
 
-using namespace Controller;
-
-void Controller_C::listenAnalog()
+void Controller::listenAnalog()
 {
-    if (controllerMaster.get_digital(pros::E_CONTROLLER_DIGITAL_R1))
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1))
     {
     }
     else
     {
     }
 
-    if (controllerMaster.get_digital(pros::E_CONTROLLER_DIGITAL_L1))
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1))
     {
     }
-    else if (!controllerMaster.get_digital(pros::E_CONTROLLER_DIGITAL_R1))
-    {
-    }
-
-    if (controllerMaster.get_digital(pros::E_CONTROLLER_DIGITAL_A))
-    {
-    }
-    if (controllerMaster.get_digital(pros::E_CONTROLLER_DIGITAL_B))
+    else if (!master.get_digital(pros::E_CONTROLLER_DIGITAL_R1))
     {
     }
 
-    if (controllerMaster.get_digital(pros::E_CONTROLLER_DIGITAL_X))
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_A))
     {
     }
-    if (controllerMaster.get_digital(pros::E_CONTROLLER_DIGITAL_Y))
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_B))
     {
     }
 
-    if (controllerMaster.get_digital(pros::E_CONTROLLER_DIGITAL_UP))
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_X))
     {
     }
-    else if (controllerMaster.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN))
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_Y))
+    {
+    }
+
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_UP))
+    {
+    }
+    else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN))
     {
     }
 

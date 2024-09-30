@@ -13,7 +13,7 @@ namespace PID
         bool m_slew = false;
         double m_sRate = 0;
 
-        Timer::Timer_C m_timer; // Custom timer class instance instead of using okapi
+        Timer::Timer_C m_timer = Timer::Timer_C(); // Custom timer class instance instead of using okapi
         double m_error = 0;
         double m_lastError = 0;
         double m_lastTime = 0;
