@@ -1,4 +1,5 @@
 #include "main.h"
+#include "pros/misc.h"
 
 /**
  * A callback function for LLEMU's center button.
@@ -87,7 +88,7 @@ void opcontrol()
     Drivetrain::chassis.calibrate();
 	
     while (true)
-	{
+	{	
 		Controller::listenAnalog();
 
 		pros::delay(20);

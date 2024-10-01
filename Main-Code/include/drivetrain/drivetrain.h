@@ -1,7 +1,7 @@
 #pragma once
 
 #include "main.h"
-
+ 
 namespace Drivetrain
 {
     // Motors
@@ -9,7 +9,7 @@ namespace Drivetrain
     extern pros::MotorGroup rightMotors;
     extern pros::MotorGroup leftPTO;
     extern pros::MotorGroup rightPTO;
-
+ 
     // Drivetrain
     extern lemlib::Drivetrain drivetrain;
     extern lemlib::Chassis chassis;
@@ -23,12 +23,10 @@ namespace Drivetrain
     extern pros::adi::Encoder verticalEncoder;
     extern lemlib::TrackingWheel horizontalTrackingWheel;
     extern lemlib::TrackingWheel verticalTrackingWheel;
+}
 
-    // Movement
-    class Movement
-    {
-        public:
-        static void simpleDrive(int& y, int& turn);
-        static void simplePTODrive(int& y, int& turn);
-    };
+namespace Movement
+{
+    extern void simpleDrive(int& y, int& turn);
+    extern void simplePTODrive(int& y, int& turn);
 }

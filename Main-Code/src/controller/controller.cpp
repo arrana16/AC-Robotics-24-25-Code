@@ -1,6 +1,25 @@
 #include "main.h"
 
-void Controller::listenAnalog()
+using namespace Movement;
+
+// Initializations
+pros::Controller master(pros::E_CONTROLLER_MASTER);
+pros::Controller partner(pros::E_CONTROLLER_PARTNER);
+
+int lasty = 2;
+int limit = 2;
+double yexp = 2.12;
+double rotexp = 5;
+bool PTO = false;
+int liftAngle = 186;
+ 
+int left = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+int right = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
+int y = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+int rot = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
+
+// Methods
+void listenAnalog()
 {
     if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1))
     {
@@ -69,7 +88,7 @@ void Controller::listenAnalog()
         y = y - abs(rot) * 0.2;
     }
 
-    Drivetrain::Movement::simpleDrive(y, rot);
+    simpleDrive(y, rot);
 
     lasty = y;
 }

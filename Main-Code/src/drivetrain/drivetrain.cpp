@@ -1,7 +1,5 @@
 #include "main.h"
 
-using namespace Drivetrain;
-
 /* Motors */
 pros::MotorGroup leftMotors({1, 2, 3}, pros::MotorGearset::red); // Change cartridge
 pros::MotorGroup rightMotors({4, 5, 6}, pros::MotorGearset::red);
@@ -11,8 +9,8 @@ pros::MotorGroup rightPTO({3, 4});
 // Drivetrain
 lemlib::Drivetrain drivetrain
 (
-    &Drivetrain::leftMotors,  // left motor group
-    &Drivetrain::rightMotors, // right motor group
+    &leftMotors,  // left motor group
+    &rightMotors, // right motor group
     10,                       // 10 inch track width
     lemlib::Omniwheel::NEW_4, // using new 4" omnis
     360,                      // drivetrain rpm is 360
@@ -47,35 +45,35 @@ lemlib::ControllerSettings angularController
 pros::Imu imu(10);
 pros::Rotation horizontalEncoder(20);
 pros::adi::Encoder verticalEncoder('C', 'D', true);
-lemlib::TrackingWheel horizontalTrackingWheel(&Drivetrain::horizontalEncoder, lemlib::Omniwheel::NEW_275, -5.75);
-lemlib::TrackingWheel verticalTrackingWheel(&Drivetrain::verticalEncoder, lemlib::Omniwheel::NEW_275, -2.5);
+lemlib::TrackingWheel horizontalTrackingWheel(&horizontalEncoder, lemlib::Omniwheel::NEW_275, -5.75);
+lemlib::TrackingWheel verticalTrackingWheel(&verticalEncoder, lemlib::Omniwheel::NEW_275, -2.5);
 lemlib::OdomSensors sensors
 (
-    &Drivetrain::verticalTrackingWheel, // vertical tracking wheel 1, set to null
+    &verticalTrackingWheel, // vertical tracking wheel 1, set to null
     nullptr, // vertical tracking wheel 2, set to nullptr as we are using IMEs
-    &Drivetrain::horizontalTrackingWheel, // horizontal tracking wheel 1
+    &horizontalTrackingWheel, // horizontal tracking wheel 1
     nullptr, // horizontal tracking wheel 2, set to nullptr as we don't have a second one
-    &Drivetrain::imu // inertial sensor
+    &imu // inertial sensor
 );
 
 // Chassis
 lemlib::Chassis chassis
 (
-    Drivetrain::drivetrain,
-    Drivetrain::lateralController,
-    Drivetrain::angularController,
-    Drivetrain::sensors
+    drivetrain,
+    lateralController,
+    angularController,
+    sensors
 );
 
 // Movement
-void Movement::simpleDrive(int& y, int& turn) 
+void simpleDrive(int& y, int& turn) 
 {
-    Drivetrain::leftMotors.move(y + turn);
-    Drivetrain::rightMotors.move(y - turn);
+    leftMotors.move(y + turn);
+    rightMotors.move(y - turn);
 }
 
-void Movement::simplePTODrive(int& y, int& turn)
+void simplePTODrive(int& y, int& turn)
 {
-    Drivetrain::leftPTO.move(y + turn);
-    Drivetrain::rightPTO.move(y - turn);
+    leftPTO.move(y + turn);
+    rightPTO.move(y - turn);
 }
