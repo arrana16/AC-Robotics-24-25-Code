@@ -37,7 +37,6 @@
 #include "api.h"
 #include "lemlib/api.hpp"
 
-#include "util/globals.h"
 #include "util/timer.h"
 #include "pid/pid.h"
 #include "drivetrain/drivetrain.h"

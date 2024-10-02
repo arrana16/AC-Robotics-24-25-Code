@@ -33,6 +33,8 @@ void initialize()
 	pros::lcd::set_text(1, "Hello PROS User!");
 
 	pros::lcd::register_btn1_cb(on_center_button);
+
+	Drivetrain::chassis.calibrate();
 }
 
 /**
@@ -83,10 +85,7 @@ void autonomous()
  */
 
 void opcontrol()
-{
-	// Initialize
-    Drivetrain::chassis.calibrate();
-	
+{	
     while (true)
 	{	
 		Controller::listenAnalog();
