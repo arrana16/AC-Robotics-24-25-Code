@@ -41,6 +41,7 @@
 #include "pid/pid.h"
 #include "drivetrain/drivetrain.h"
 #include "controller/controller.h"
+#include "auton/auton.h"
 
 
 /**
