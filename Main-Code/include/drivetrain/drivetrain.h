@@ -1,7 +1,7 @@
 #pragma once
 
 #include "main.h"
- 
+
 namespace Drivetrain
 {
     // Motors
@@ -25,7 +25,7 @@ namespace Drivetrain
 
     // Chassis
     extern lemlib::Chassis chassis;
-}
+} 
 
 namespace Movement
 {
