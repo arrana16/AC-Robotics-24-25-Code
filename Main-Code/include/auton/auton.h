@@ -10,10 +10,10 @@ enum AutonPosition
 
 namespace Auton
 {
-    extern void A(AutonPosition position);
-    extern void A_1(AutonPosition position);
-    extern void A_2(AutonPosition position);
-    extern void A_3(AutonPosition position);
-    extern void A_4(AutonPosition position);
+    extern void A(AutonPosition &position);
+    extern void A_1(AutonPosition &position);
+    extern void A_2(AutonPosition &position);
+    extern void A_3(AutonPosition &position);
+    extern void A_4(AutonPosition &position);
     extern void Skills();
 }

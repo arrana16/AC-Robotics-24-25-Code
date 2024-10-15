@@ -38,6 +38,7 @@
 #include "lemlib/api.hpp"
 
 #include "util/timer.h"
+#include "util/coordinates.h"
 #include "pid/pid.h"
 #include "drivetrain/drivetrain.h"
 #include "controller/controller.h"
