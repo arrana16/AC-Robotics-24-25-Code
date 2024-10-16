@@ -16,4 +16,5 @@ namespace Auton
     extern void A_3(AutonPosition &position);
     extern void A_4(AutonPosition &position);
     extern void Skills();
+    extern void EarlySkills();
 }
