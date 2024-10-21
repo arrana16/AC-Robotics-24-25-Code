@@ -15,6 +15,7 @@ static std::vector<float> v = {};
 /* All points based from blue side and reflected in Coordinates::processMovement to the red side if needed*/
 namespace Auton
 {
+    /* On positions R2 and B2 */
     void A(AutonPosition &position)
     {
         // Turn to pile 4 and pick up disks
@@ -50,9 +51,18 @@ namespace Auton
         moveToPoseV(chassis, v);
     }
 
+    /* On positions R1 and B1 */
     void A_1(AutonPosition &position)
     {
-        
+        // Turn to key goal
+        chassis.turnToPoint(1.773, -117.969, 1000);
+
+        // Go to key goal
+        v = processMovement(1.773, -117.969, 70, position);
+        moveToPoseV(chassis, v);
+
+        // Pick up pile 1
+        v = processMovement()
     }
 
     void A_2(AutonPosition &position)
@@ -62,7 +72,7 @@ namespace Auton
 
     void A_3(AutonPosition &position)
     {
-        
+         
     }
 
     void A_4(AutonPosition &position)
