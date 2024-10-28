@@ -43,6 +43,8 @@
 #include "drivetrain/drivetrain.h"
 #include "controller/controller.h"
 #include "auton/auton.h"
+#include "intake/intake.h"
+#include "clamp/clamp.h"
 
 
 /**
