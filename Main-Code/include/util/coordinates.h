@@ -7,6 +7,6 @@
 
 namespace Coordinates
 {
-    extern std::vector<float> processMovement(float x, float y, float theta, AutonPosition &position);
+    extern std::vector<float> processMovement(float x, float y, float theta, char &position);
     extern void moveToPoseV(lemlib::Chassis &chassis, std::vector<float> &v);
 }

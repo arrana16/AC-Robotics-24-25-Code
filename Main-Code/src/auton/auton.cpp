@@ -16,7 +16,7 @@ static std::vector<float> v = {};
 namespace Auton
 {
     /* On positions R2 and B2 */
-    void A(AutonPosition &position)
+    void A(char &position)
     {
         // Turn to pile 4 and pick up disks
         chassis.turnToPoint(18.067, 109.134, 1000);
@@ -52,7 +52,7 @@ namespace Auton
     }
 
     /* On positions R1 and B1 */
-    void A_1(AutonPosition &position)
+    void A_1(char &position)
     {
         // Turn to key goal
         chassis.turnToPoint(1.773, -117.969, 1000);
@@ -62,20 +62,20 @@ namespace Auton
         moveToPoseV(chassis, v);
 
         // Pick up pile 1
-        v = processMovement()
+        // v = processMovement()
     }
 
-    void A_2(AutonPosition &position)
+    void A_2(char &position)
     {
         
     }
 
-    void A_3(AutonPosition &position)
+    void A_3(char &position)
     {
          
     }
 
-    void A_4(AutonPosition &position)
+    void A_4(char &position)
     {
         
     }
