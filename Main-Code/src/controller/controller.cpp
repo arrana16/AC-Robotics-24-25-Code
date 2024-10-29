@@ -22,16 +22,21 @@ namespace Controller
     {
         if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1))
         {
+            // Intake
+            Intake::intake();
         }
         else
         {
+            Intake::hold();
         }
 
         if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1))
         {
+            Intake::outtake();
         }
         else if (!master.get_digital(pros::E_CONTROLLER_DIGITAL_R1))
         {
+            Intake::hold();
         }
 
         if (master.get_digital(pros::E_CONTROLLER_DIGITAL_A))
@@ -46,6 +51,8 @@ namespace Controller
         }
         if (master.get_digital(pros::E_CONTROLLER_DIGITAL_Y))
         {
+            // Clamp
+            Clamp::toggle();
         }
 
         if (master.get_digital(pros::E_CONTROLLER_DIGITAL_UP))

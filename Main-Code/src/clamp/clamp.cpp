@@ -2,16 +2,30 @@
 
 namespace Clamp
 {
-    pros::ADIDigitalOut piston1('A');
-    pros::ADIDigitalOut piston2('A');
+    pros::adi::DigitalOut clamp('A');
+    bool stateOpen = false;
 
-    void clampOn()
+    void open()
     {
-
+        clamp.set_value(true);
     }
 
-    void clampOff()
+    void close()
     {
-        
+        clamp.set_value(false);
+    }
+
+    void toggle()
+    {
+        if (stateOpen)
+        {
+            close();
+            stateOpen = false;
+        }
+        else
+        {
+            open();
+            stateOpen = true;
+        }
     }
 }

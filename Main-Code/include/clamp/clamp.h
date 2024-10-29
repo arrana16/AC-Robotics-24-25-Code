@@ -3,14 +3,10 @@
 #include "main.h"
 
 namespace Clamp {
-    // Initializes the clamp motor and sets up PID control (optional)
-    void init(pros::Motor& motor, double openPos, double closePos, lemlib::PID pid);
+    extern pros::adi::DigitalOut clamp;
+    extern bool stateOpen;
 
-    // Functions to open and close the clamp with position control
-    void open();
-    void close();
-
-    // Optionally set custom positions during runtime
-    void setOpenPosition(double position);
-    void setClosePosition(double position);
+    extern void open();
+    extern void close();
+    extern void toggle();
 }
