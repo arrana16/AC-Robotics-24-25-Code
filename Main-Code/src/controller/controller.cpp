@@ -12,14 +12,14 @@ namespace Controller
     bool PTO = false;
     int liftAngle = 186;
 
-    int left = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-    int right = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
-    int y = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-    int rot = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
-
     // Methods
     void listenAnalog()
     {
+        int left = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+        int right = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
+        int y = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+        int rot = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
+
         if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1))
         {
             // Intake
@@ -41,9 +41,11 @@ namespace Controller
 
         if (master.get_digital(pros::E_CONTROLLER_DIGITAL_A))
         {
+            Clamp::close();
         }
         if (master.get_digital(pros::E_CONTROLLER_DIGITAL_B))
         {
+            Clamp::open();
         }
 
         if (master.get_digital(pros::E_CONTROLLER_DIGITAL_X))
@@ -51,8 +53,6 @@ namespace Controller
         }
         if (master.get_digital(pros::E_CONTROLLER_DIGITAL_Y))
         {
-            // Clamp
-            Clamp::toggle();
         }
 
         if (master.get_digital(pros::E_CONTROLLER_DIGITAL_UP))

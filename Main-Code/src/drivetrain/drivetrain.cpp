@@ -3,10 +3,18 @@
 namespace Drivetrain
 {
     /* Motors */
-    pros::MotorGroup leftMotors({1, 2, 3}, pros::MotorGearset::red); // Change cartridge
-    pros::MotorGroup rightMotors({4, 5, 6}, pros::MotorGearset::red);
-    pros::MotorGroup leftPTO({1, 2});
-    pros::MotorGroup rightPTO({3, 4});
+    // pros::Motor frontLeft(1, pros::MotorGearset::blue);
+    // pros::Motor middleLeft(11, pros::MotorGearset::blue);
+    // pros::Motor backLeft(15, pros::MotorGearset::blue);
+
+    // pros::Motor frontRight(-3, pros::MotorGearset::blue);
+    // pros::Motor middleRight(-7, pros::MotorGearset::blue);
+    // pros::Motor backRight(-10, pros::MotorGearset::blue);
+
+    pros::MotorGroup leftMotors({-1, -11, -15});
+    pros::MotorGroup rightMotors({3, 7, 10});
+    // pros::MotorGroup leftPTO({1, 2});
+    // pros::MotorGroup rightPTO({3, 4});
 
     // Drivetrain
     lemlib::Drivetrain drivetrain(
@@ -41,17 +49,25 @@ namespace Drivetrain
     );
 
     // Odometry
-    pros::Imu imu(10);
-    pros::Rotation horizontalEncoder(20);
-    pros::adi::Encoder verticalEncoder('C', 'D', true);
-    lemlib::TrackingWheel horizontalTrackingWheel(&horizontalEncoder, lemlib::Omniwheel::NEW_275, -5.75);
-    lemlib::TrackingWheel verticalTrackingWheel(&verticalEncoder, lemlib::Omniwheel::NEW_275, -2.5);
+    // pros::Imu imu(10);
+    // pros::Rotation horizontalEncoder(20);
+    // pros::adi::Encoder verticalEncoder('C', 'D', true);
+    // lemlib::TrackingWheel horizontalTrackingWheel(&horizontalEncoder, lemlib::Omniwheel::NEW_275, -5.75);
+    // lemlib::TrackingWheel verticalTrackingWheel(&verticalEncoder, lemlib::Omniwheel::NEW_275, -2.5);
+    // 
+    // lemlib::OdomSensors sensors(
+    //     &verticalTrackingWheel,   // vertical tracking wheel 1, set to null
+    //     nullptr,                  // vertical tracking wheel 2, set to nullptr as we are using IMEs
+    //     &horizontalTrackingWheel, // horizontal tracking wheel 1
+    //     nullptr,                  // horizontal tracking wheel 2, set to nullptr as we don't have a second one
+    //     &imu                      // inertial sensor
+    // );
     lemlib::OdomSensors sensors(
-        &verticalTrackingWheel,   // vertical tracking wheel 1, set to null
-        nullptr,                  // vertical tracking wheel 2, set to nullptr as we are using IMEs
-        &horizontalTrackingWheel, // horizontal tracking wheel 1
-        nullptr,                  // horizontal tracking wheel 2, set to nullptr as we don't have a second one
-        &imu                      // inertial sensor
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr
     );
 
     // Chassis
@@ -59,7 +75,8 @@ namespace Drivetrain
         drivetrain,
         lateralController,
         angularController,
-        sensors);
+        sensors
+    );
 }
 
 // Movement
@@ -71,9 +88,9 @@ namespace Movement
         Drivetrain::rightMotors.move(y - turn);
     }
 
-    void simplePTODrive(int &y, int &turn)
-    {
-        Drivetrain::leftPTO.move(y + turn);
-        Drivetrain::rightPTO.move(y - turn);
-    }
+    // void simplePTODrive(int &y, int &turn)
+    // {
+    //     Drivetrain::leftPTO.move(y + turn);
+    //     Drivetrain::rightPTO.move(y - turn);
+    // }
 }

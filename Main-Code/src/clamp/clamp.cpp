@@ -2,8 +2,7 @@
 
 namespace Clamp
 {
-    pros::adi::DigitalOut clamp('A');
-    bool stateOpen = false;
+    pros::adi::DigitalOut clamp('B');
 
     void open()
     {
@@ -13,19 +12,5 @@ namespace Clamp
     void close()
     {
         clamp.set_value(false);
-    }
-
-    void toggle()
-    {
-        if (stateOpen)
-        {
-            close();
-            stateOpen = false;
-        }
-        else
-        {
-            open();
-            stateOpen = true;
-        }
     }
 }

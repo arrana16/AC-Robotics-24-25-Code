@@ -5,10 +5,18 @@
 namespace Drivetrain
 {
     // Motors
+    // extern pros::Motor frontLeft;
+    // extern pros::Motor middleLeft;
+    // extern pros::Motor backLeft;
+
+    // extern pros::Motor frontRight;
+    // extern pros::Motor middleRight;
+    // extern pros::Motor backRight;
+
     extern pros::MotorGroup leftMotors;
     extern pros::MotorGroup rightMotors;
-    extern pros::MotorGroup leftPTO;
-    extern pros::MotorGroup rightPTO;
+    // extern pros::MotorGroup leftPTO;
+    // extern pros::MotorGroup rightPTO;
  
     // Drivetrain
     extern lemlib::Drivetrain drivetrain;
