@@ -3,14 +3,6 @@
 namespace Drivetrain
 {
     /* Motors */
-    // pros::Motor frontLeft(1, pros::MotorGearset::blue);
-    // pros::Motor middleLeft(11, pros::MotorGearset::blue);
-    // pros::Motor backLeft(15, pros::MotorGearset::blue);
-
-    // pros::Motor frontRight(-3, pros::MotorGearset::blue);
-    // pros::Motor middleRight(-7, pros::MotorGearset::blue);
-    // pros::Motor backRight(-10, pros::MotorGearset::blue);
-
     pros::MotorGroup leftMotors({-1, -11, -15});
     pros::MotorGroup rightMotors({3, 7, 10});
     // pros::MotorGroup leftPTO({1, 2});
@@ -49,25 +41,17 @@ namespace Drivetrain
     );
 
     // Odometry
-    // pros::Imu imu(10);
-    // pros::Rotation horizontalEncoder(20);
-    // pros::adi::Encoder verticalEncoder('C', 'D', true);
-    // lemlib::TrackingWheel horizontalTrackingWheel(&horizontalEncoder, lemlib::Omniwheel::NEW_275, -5.75);
-    // lemlib::TrackingWheel verticalTrackingWheel(&verticalEncoder, lemlib::Omniwheel::NEW_275, -2.5);
-    // 
-    // lemlib::OdomSensors sensors(
-    //     &verticalTrackingWheel,   // vertical tracking wheel 1, set to null
-    //     nullptr,                  // vertical tracking wheel 2, set to nullptr as we are using IMEs
-    //     &horizontalTrackingWheel, // horizontal tracking wheel 1
-    //     nullptr,                  // horizontal tracking wheel 2, set to nullptr as we don't have a second one
-    //     &imu                      // inertial sensor
-    // );
+    pros::Imu imu(4);
+    pros::Rotation horizontalEncoder(12);
+    pros::Rotation verticalEncoder(8);
+    lemlib::TrackingWheel horizontalTrackingWheel(&horizontalEncoder, lemlib::Omniwheel::NEW_2, 3);
+    lemlib::TrackingWheel verticalTrackingWheel(&verticalEncoder, lemlib::Omniwheel::NEW_2, -0.75);
     lemlib::OdomSensors sensors(
-        nullptr,
-        nullptr,
-        nullptr,
-        nullptr,
-        nullptr
+        &verticalTrackingWheel,   // vertical tracking wheel 1, set to null
+        nullptr,                  // vertical tracking wheel 2, set to nullptr as we are using IMEs
+        &horizontalTrackingWheel, // horizontal tracking wheel 1
+        nullptr,                  // horizontal tracking wheel 2, set to nullptr as we don't have a second one
+        &imu                      // inertial sensor
     );
 
     // Chassis

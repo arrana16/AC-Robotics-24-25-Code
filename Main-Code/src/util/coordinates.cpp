@@ -1,20 +1,32 @@
 #include "main.h"
 
 #include <iostream>
-#include <tuple>
+#include <string>
 #include <vector>
 
 namespace Coordinates
 {
-    std::vector<float> processMovement(float x, float y, float theta, char &position)
+    std::vector<float> processMoveToPose(float x, float y, float theta, std::string &position)
     {
-        if (position == 'B') return {x, y, theta};
-        else if (position == 'R') return {-x, y, (float) (360 - theta)};
-        else return {-1, -1, -1};
+        if (position == "B") return {x, y, theta};
+        else if (position == "R") return {-x, y, (float) (360 - theta)};
+        else throw std::runtime_error("omd");
     }
 
-    void moveToPoseV(lemlib::Chassis &chassis, std::vector<int> &v)
+    std::vector<float> processTurnToPoint(float x, float y, std::string &position)
     {
-        chassis.moveToPose(v.at(0), v.at(1), v.at(2), 100);
+        if (position == "B") return {x, y};
+        else if (position == "R") return {-x, y};
+        else throw std::runtime_error("omd");
+    }
+
+    void moveToPose(lemlib::Chassis &chassis, std::vector<float> &v)
+    {
+        chassis.moveToPose(v.at(0), v.at(1), v.at(2), 1000);
+    }
+
+    void turnToPoint(lemlib::Chassis &chassis, std::vector<float> &v)
+    {
+        chassis.turnToPoint(v.at(0), v.at(1), 1000);
     }
 }

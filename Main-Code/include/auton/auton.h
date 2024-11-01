@@ -2,13 +2,16 @@
 
 #include "main.h"
 
+#include <iostream>
+#include <string>
+
 namespace Auton
 {
-    extern void A(char &position);
-    extern void A_1(char &position);
-    extern void A_2(char &position);
-    extern void A_3(char &position);
-    extern void A_4(char &position);
+    extern void A(std::string &position);
+    extern void A_1(std::string &position);
+    extern void A_2(std::string &position);
+    extern void A_3(std::string &position);
+    extern void A_4(std::string &position);
     extern void Skills();
     extern void EarlySkills();
 }
