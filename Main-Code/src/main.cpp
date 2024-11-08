@@ -1,4 +1,5 @@
 #include "main.h"
+#include "drivetrain/drivetrain.h"
 #include "pros/misc.h"
 
 #include <iostream>
@@ -27,6 +28,9 @@ void initialize()
 	pros::lcd::register_btn1_cb(on_center_button);
 
 	Drivetrain::chassis.calibrate();
+
+	pros::lcd::initialize(); // initialize brain screen
+	// autonomous();
 }
 
 /**
