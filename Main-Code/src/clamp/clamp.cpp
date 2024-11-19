@@ -6,11 +6,11 @@ namespace Clamp
 
     void open()
     {
-        clamp.set_value(true);
+        clamp.set_value(false);
     }
 
     void close()
     {
-        clamp.set_value(false);
+        clamp.set_value(true);
     }
 }

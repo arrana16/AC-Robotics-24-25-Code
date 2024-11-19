@@ -22,4 +22,5 @@ namespace Controller
 
     // Listen for controller analog input
     extern void listenAnalog();
+    extern void breakPoint();
 }

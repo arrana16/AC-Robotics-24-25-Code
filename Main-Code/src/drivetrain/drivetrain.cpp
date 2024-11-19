@@ -13,38 +13,38 @@ namespace Drivetrain
         &leftMotors,              // left motor group
         &rightMotors,             // right motor group
         10,                       // 10 inch track width
-        lemlib::Omniwheel::NEW_4, // using new 4" omnis
-        360,                      // drivetrain rpm is 360
+        lemlib::Omniwheel::NEW_325, // using new 4" omnis
+        450,                      // drivetrain rpm is 360
         2                         // horizontal drift is 2 (for now)
     );
     lemlib::ControllerSettings lateralController(
-        2,   // proportional gain (kP)
-        0,   // integral gain (kI)
-        10,  // derivative gain (kD)
+        5.3,   // proportional gain (kP)
+        0.0011,   // integral gain (kI)
+        0.05,  // derivative gain (kD)
         3,   // anti windup
-        1,   // small error range, in inches
+        0.1,   // small error range, in inches
         100, // small error range timeout, in milliseconds
-        3,   // large error range, in inches
+        0.5,   // large error range, in inches
         500, // large error range timeout, in milliseconds
         0    // maximum acceleration (slew)
     );
     lemlib::ControllerSettings angularController(
-        2,  // proportional gain (kP)
-        0,  // integral gain (kI)
-        10, // derivative gain (kD)
+        2.1,  // proportional gain (kP)
+        0.0,  // integral gain (kI)
+        12, // derivative gain (kD)
         0,  // anti windup
-        0,  // small error range, in inches
-        0,  // small error range timeout, in milliseconds
-        0,  // large error range, in inches
+        1,  // small error range, in inches
+        800,  // small error range timeout, in milliseconds
+        2,  // large error range, in inches
         0,  // large error range timeout, in milliseconds
-        0   // maximum acceleration (slew)
+        10   // maximum acceleration (slew)
     );
 
     // Odometry
-    pros::Imu imu(4);
+    pros::Imu imu(16);
     pros::Rotation horizontalEncoder(12);
     pros::Rotation verticalEncoder(8);
-    lemlib::TrackingWheel horizontalTrackingWheel(&horizontalEncoder, lemlib::Omniwheel::NEW_2, 3); // 
+    lemlib::TrackingWheel horizontalTrackingWheel(&horizontalEncoder, lemlib::Omniwheel::NEW_2, 3);
     lemlib::TrackingWheel verticalTrackingWheel(&verticalEncoder, lemlib::Omniwheel::NEW_2, -0.75);
     lemlib::OdomSensors sensors(
         &verticalTrackingWheel,   // vertical tracking wheel 1, set to null

@@ -7,10 +7,12 @@ namespace Controller
 
     int lasty = 2;
     int limit = 2;
-    double yexp = 2.12;
+    double yexp = 2.8;
     double rotexp = 5;
     bool PTO = false;
     int liftAngle = 186;
+
+    bool closed = false;
 
     // Methods
     void listenAnalog()
@@ -51,8 +53,18 @@ namespace Controller
         if (master.get_digital(pros::E_CONTROLLER_DIGITAL_X))
         {
         }
-        if (master.get_digital(pros::E_CONTROLLER_DIGITAL_Y))
+        if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y))
         {
+            if (closed)
+            {
+                Clamp::open();
+            }
+            else
+            {
+                Clamp::close();
+            }
+
+            closed = !closed;
         }
 
         if (master.get_digital(pros::E_CONTROLLER_DIGITAL_UP))
@@ -96,8 +108,19 @@ namespace Controller
             y = y - abs(rot) * 0.2;
         }
 
+        rot *= 0.8;
+
         Movement::simpleDrive(y, rot);
 
         lasty = y;
+    }
+
+    void breakPoint() {
+        bool breakPoint = false;
+        while (!breakPoint) {
+            if (master.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
+                breakPoint = true;
+            }
+        }
     }
 }
