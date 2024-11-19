@@ -3,6 +3,16 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
+
+void test1(){}
+void test2(){}
+void test3(){}
+rd::Selector selector({
+        {"Best auton", test1},
+        {"Simple auton", test2},
+        {"Good auton", test3},
+    });
 
 /**
  * A callback function for LLEMU's center button.
@@ -20,6 +30,7 @@ void on_center_button()
  * All other competition modes are blocked by initialize; it is recommended
  * to keep execution time for this mode under a few seconds.
  */
+
 void initialize()
 {
 	pros::lcd::initialize();
@@ -27,6 +38,8 @@ void initialize()
 	pros::lcd::register_btn1_cb(on_center_button);
 
 	Drivetrain::chassis.calibrate();
+
+	// autonomous();
 }
 
 /**
@@ -58,10 +71,10 @@ void competition_initialize() {}
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
+
 void autonomous() 
 {
-	std::string side = "B";
-	Auton::A(side);
+	// selector.run_auton(); 
 }
 
 /**
@@ -83,6 +96,9 @@ void opcontrol()
     while (true)
 	{	
 		Controller::listenAnalog();
+
+		pros::lcd::print(0, "X: %f", Drivetrain::horizontalTrackingWheel.getDistanceTraveled());
+		pros::lcd::print(1, "X: %f", Drivetrain::verticalTrackingWheel.getDistanceTraveled());
 
 		pros::delay(20);
 	}

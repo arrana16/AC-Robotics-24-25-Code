@@ -44,7 +44,7 @@ namespace Drivetrain
     pros::Imu imu(4);
     pros::Rotation horizontalEncoder(12);
     pros::Rotation verticalEncoder(8);
-    lemlib::TrackingWheel horizontalTrackingWheel(&horizontalEncoder, lemlib::Omniwheel::NEW_2, 3);
+    lemlib::TrackingWheel horizontalTrackingWheel(&horizontalEncoder, lemlib::Omniwheel::NEW_2, 3); // 
     lemlib::TrackingWheel verticalTrackingWheel(&verticalEncoder, lemlib::Omniwheel::NEW_2, -0.75);
     lemlib::OdomSensors sensors(
         &verticalTrackingWheel,   // vertical tracking wheel 1, set to null

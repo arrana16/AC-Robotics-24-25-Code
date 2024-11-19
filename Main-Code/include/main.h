@@ -36,6 +36,7 @@
 
 #include "api.h"
 #include "lemlib/api.hpp"
+#include "robodash/api.h"
 
 #include "util/timer.h"
 #include "util/coordinates.h"
@@ -45,6 +46,7 @@
 #include "auton/auton.h"
 #include "intake/intake.h"
 #include "clamp/clamp.h"
+#include "doinker.h"
 
 
 /**

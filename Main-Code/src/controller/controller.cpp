@@ -57,9 +57,11 @@ namespace Controller
 
         if (master.get_digital(pros::E_CONTROLLER_DIGITAL_UP))
         {
+            Doinker::down();
         }
         else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN))
         {
+            Doinker::up();
         }
 
         if (y >= 0)
