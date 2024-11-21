@@ -47,6 +47,7 @@
 #include "intake/intake.h"
 #include "clamp/clamp.h"
 #include "doinker.h"
+#include "lift.h"
 
 
 /**
