@@ -18,8 +18,8 @@ namespace Drivetrain
         2                         // horizontal drift is 2 (for now)
     );
     lemlib::ControllerSettings lateralController(
-        5.3,   // proportional gain (kP)
-        0.0011,   // integral gain (kI)
+        3.9,   // proportional gain (kP)
+        0.0,   // integral gain (kI)
         0.05,  // derivative gain (kD)
         3,   // anti windup
         0.1,   // small error range, in inches
@@ -29,9 +29,9 @@ namespace Drivetrain
         0    // maximum acceleration (slew)
     );
     lemlib::ControllerSettings angularController(
-        2.1,  // proportional gain (kP)
+        3.4,  // proportional gain (kP)
         0.0,  // integral gain (kI)
-        12, // derivative gain (kD)
+        10, // derivative gain (kD)
         0,  // anti windup
         1,  // small error range, in inches
         800,  // small error range timeout, in milliseconds
@@ -43,9 +43,9 @@ namespace Drivetrain
     // Odometry
     pros::Imu imu(16);
     pros::Rotation horizontalEncoder(12);
-    pros::Rotation verticalEncoder(8);
-    lemlib::TrackingWheel horizontalTrackingWheel(&horizontalEncoder, lemlib::Omniwheel::NEW_2, 3);
-    lemlib::TrackingWheel verticalTrackingWheel(&verticalEncoder, lemlib::Omniwheel::NEW_2, -0.75);
+    pros::Rotation verticalEncoder(-8);
+    lemlib::TrackingWheel horizontalTrackingWheel(&horizontalEncoder, 2, 2.4);
+    lemlib::TrackingWheel verticalTrackingWheel(&verticalEncoder, 2, -0.5);
     lemlib::OdomSensors sensors(
         &verticalTrackingWheel,   // vertical tracking wheel 1, set to null
         nullptr,                  // vertical tracking wheel 2, set to nullptr as we are using IMEs

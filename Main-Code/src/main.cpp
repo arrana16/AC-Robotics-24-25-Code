@@ -39,6 +39,9 @@ void initialize()
 	pros::lcd::register_btn1_cb(on_center_button);
 
 	Drivetrain::chassis.calibrate();
+// 
+	// autonomous();
+
 }
 
 /**
@@ -73,7 +76,10 @@ void competition_initialize() {}
 
 void autonomous() 
 {
-	// selector.run_auton(); 
+	Drivetrain::chassis.setPose(0, 0, 0);
+
+	Drivetrain::chassis.moveToPoint(0, 96, 5000);
+	Drivetrain::chassis.waitUntilDone();
 }
 
 /**
@@ -96,8 +102,8 @@ void opcontrol()
 	{	
 		Controller::listenAnalog();
 
-		pros::lcd::print(0, "X: %f", Drivetrain::horizontalTrackingWheel.getDistanceTraveled());
-		pros::lcd::print(1, "X: %f", Drivetrain::verticalTrackingWheel.getDistanceTraveled());
+		pros::lcd::print(0, "X: %f", Drivetrain::chassis.getPose().x);
+		pros::lcd::print(1, "Y: %f", Drivetrain::chassis.getPose().y);
 
 		pros::delay(20);
 	}

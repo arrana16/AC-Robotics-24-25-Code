@@ -1,4 +1,5 @@
 #include "main.h"
+#include "pros/misc.h"
 
 namespace Controller
 {
@@ -41,14 +42,14 @@ namespace Controller
             Intake::hold();
         }
 
-        if (master.get_digital(pros::E_CONTROLLER_DIGITAL_A))
-        {
-            Clamp::close();
-        }
-        if (master.get_digital(pros::E_CONTROLLER_DIGITAL_B))
-        {
-            Clamp::open();
-        }
+        // if (master.get_digital(pros::E_CONTROLLER_DIGITAL_A))
+        // {
+        //     Clamp::close();
+        // }
+        // if (master.get_digital(pros::E_CONTROLLER_DIGITAL_B))
+        // {
+        //     Clamp::open();
+        // }
 
         if (master.get_digital(pros::E_CONTROLLER_DIGITAL_X))
         {
@@ -67,11 +68,11 @@ namespace Controller
             closed = !closed;
         }
 
-        if (master.get_digital(pros::E_CONTROLLER_DIGITAL_UP))
+        if (master.get_digital(pros::E_CONTROLLER_DIGITAL_A))
         {
             Doinker::down();
         }
-        else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN))
+        else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_B))
         {
             Doinker::up();
         }
