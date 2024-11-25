@@ -98,13 +98,13 @@ void autonomous()
 
 void opcontrol()
 {	
+	pros::Task sortTask(ColorSorter::sortTaskFunc);
+
     while (true)
 	{	
 		Controller::listenAnalog();
 
 		pros::lcd::print(0, "X: %f", Drivetrain::chassis.getPose().x);
 		pros::lcd::print(1, "Y: %f", Drivetrain::chassis.getPose().y);
-
-		pros::delay(20);
 	}
 }

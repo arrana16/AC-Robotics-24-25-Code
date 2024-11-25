@@ -38,6 +38,8 @@
 #include "lemlib/api.hpp"
 #include "robodash/api.h"
 
+#include "ports.h"
+
 #include "util/timer.h"
 #include "util/coordinates.h"
 #include "pid/pid.h"
@@ -48,7 +50,7 @@
 #include "clamp/clamp.h"
 #include "doinker.h"
 #include "lift.h"
-
+#include "color_sorter.h"
 
 /**
  * You should add more #includes here
