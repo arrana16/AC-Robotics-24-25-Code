@@ -2,11 +2,16 @@
 
 namespace Lift
 {
-    pros::MotorGroup liftMotors({});
-    pros::Rotation liftRot('A');
-    PID liftPID(10, 0, 10, false, 0);
+    pros::MotorGroup liftMotors({19});
+    pros::Rotation liftRot(4);
+    PID liftPID(0.015, 0.02, 0, false, 0);
 
-    void liftMove(int angle) {
-        liftMotors.move(liftPID.calculate(angle, liftRot.get_angle() / 100));
+    int liftMove(int angle) {
+        int rot_angle = liftRot.get_position(); 
+        // if (rot_angle < 180) {
+        //     rot_angle +=360;
+        // }
+        liftMotors.move(liftPID.calculate(angle*100, rot_angle));
+        return rot_angle;
     }
 }

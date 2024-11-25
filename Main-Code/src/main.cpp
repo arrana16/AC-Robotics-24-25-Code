@@ -1,4 +1,5 @@
 #include "main.h"
+#include "auton/auton.h"
 #include "drivetrain/drivetrain.h"
 #include "pros/misc.h"
 
@@ -76,10 +77,12 @@ void competition_initialize() {}
 
 void autonomous() 
 {
-	Drivetrain::chassis.setPose(0, 0, 0);
+	std::string a = "a";
+	Auton::GoalRushRight();
+	// Drivetrain::chassis.setPose(0, 0, 0);
 
-	Drivetrain::chassis.moveToPoint(0, 96, 5000);
-	Drivetrain::chassis.waitUntilDone();
+	// Drivetrain::chassis.moveToPoint(0, 96, 5000);
+	// Drivetrain::chassis.waitUntilDone();
 }
 
 /**
@@ -102,9 +105,10 @@ void opcontrol()
 	{	
 		Controller::listenAnalog();
 
-		pros::lcd::print(0, "X: %f", Drivetrain::chassis.getPose().x);
+		pros::lcd::print(0, "X: %d", Lift::liftRot.get_position());
 		pros::lcd::print(1, "Y: %f", Drivetrain::chassis.getPose().y);
 
 		pros::delay(20);
+
 	}
 }

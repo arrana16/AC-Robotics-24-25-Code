@@ -4,7 +4,7 @@ namespace Drivetrain
 {
     /* Motors */
     pros::MotorGroup leftMotors({-1, -11, -15});
-    pros::MotorGroup rightMotors({3, 7, 10});
+    pros::MotorGroup rightMotors({3, 6 , 10});
     // pros::MotorGroup leftPTO({1, 2});
     // pros::MotorGroup rightPTO({3, 4});
 

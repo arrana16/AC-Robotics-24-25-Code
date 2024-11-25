@@ -1,3 +1,4 @@
+#include "clamp/clamp.h"
 #include "intake/intake.h"
 #include "main.h"
 
@@ -176,5 +177,167 @@ namespace Auton
     void EarlySkills()
     {
         
+    }
+
+    void GoalRushLeft() {
+        Drivetrain::chassis.setPose(55, -36.75, -90);
+        Drivetrain::chassis.moveToPoint(27, -38, 1000, {.minSpeed=100, .earlyExitRange=3});
+        Drivetrain::chassis.moveToPoint(21, -39, 250);
+        Drivetrain::chassis.waitUntilDone();
+        Doinker::down();
+        pros::delay(200);
+        Drivetrain::chassis.turnToHeading(-165, 350);
+        Drivetrain::chassis.waitUntilDone();
+        Doinker::up();
+        Drivetrain::chassis.moveToPoint(17, -37, 1000, {.forwards=false});
+        Drivetrain::chassis.moveToPoint(23, -26, 2000, {.forwards=false, .maxSpeed=60});
+        Drivetrain::chassis.waitUntilDone();
+        Clamp::close();
+        pros::delay(400);
+        Intake::intake();
+        Drivetrain::chassis.moveToPoint(23, -48, 1000);
+        Drivetrain::chassis.moveToPoint(48, -60, 1500);
+        Drivetrain::chassis.moveToPoint(60, -67, 2000, {.maxSpeed=100});
+        Drivetrain::chassis.moveToPoint(56.5, -63, 400);
+        Drivetrain::chassis.moveToPoint(53, -45, 1500, {.forwards=false});
+        Drivetrain::chassis.turnToHeading(-90, 1000);
+        Drivetrain::chassis.waitUntilDone();
+        Clamp::open();
+        Drivetrain::chassis.moveToPoint(28, -52, 1000);
+        Drivetrain::chassis.waitUntilDone();
+        Doinker::down();
+        Drivetrain::chassis.moveToPoint(50, -42, 2000, {.forwards=false});
+        Drivetrain::chassis.waitUntilDone();
+
+        Doinker::up();
+        // Drivetrain::chassis.waitUntilDone();
+        // Drivetrain::chassis.moveToPoint(28, -28, 2000);
+        //        Lift::liftMotors.move(100);
+        // pros::delay(500);
+        // Lift::liftMotors.move(0);
+
+
+
+        // pros::delay(500);
+        // Drivetrain::chassis.turnToHeading(-170, 1000)
+        // Drivetrain::chassis.moveToPoint(24, -36.75, 1000);
+    }
+
+    void GoalRushRight() {
+        Drivetrain::chassis.setPose(55, 36.75, -90);
+        Drivetrain::chassis.moveToPoint(27, 38, 1000, {.minSpeed=100, .earlyExitRange=3});
+        Drivetrain::chassis.moveToPoint(21.5, 42, 450);
+        Drivetrain::chassis.turnToHeading(-50, 200);
+        Drivetrain::chassis.waitUntilDone();
+        Doinker::down();
+        pros::delay(200);
+        Drivetrain::chassis.turnToHeading(20, 450);
+        Drivetrain::chassis.waitUntilDone();
+        Doinker::up();
+        Drivetrain::chassis.moveToPoint(17, 37, 1000, {.forwards=false});
+        Drivetrain::chassis.moveToPoint(23, 26, 3000, {.forwards=false, .maxSpeed=60});
+        Drivetrain::chassis.waitUntilDone();
+        Clamp::close();
+        pros::delay(400);
+        Intake::intake();
+        Drivetrain::chassis.moveToPoint(23, 48, 1000);
+        Drivetrain::chassis.moveToPoint(48, 60, 1500);
+        Drivetrain::chassis.moveToPoint(60, 67, 2000, {.maxSpeed=100});
+        Drivetrain::chassis.moveToPoint(56.5, 63, 400);
+        Drivetrain::chassis.moveToPoint(53, 45, 1500, {.forwards=false});
+        Drivetrain::chassis.turnToHeading(-90, 1000);
+        Drivetrain::chassis.waitUntilDone();
+        Clamp::open();
+        Drivetrain::chassis.moveToPoint(30, 52, 1000);
+        Drivetrain::chassis.turnToHeading(-30, 500);
+        Drivetrain::chassis.waitUntilDone();
+        Doinker::down();
+        Drivetrain::chassis.moveToPoint(50, 42, 2000, {.forwards=false});
+        Drivetrain::chassis.waitUntilDone();
+
+        Doinker::up();
+        // Drivetrain::chassis.moveToPoint(28, 28, 2000);
+        // Drivetrain::chassis.waitUntilDone();
+        // Lift::liftMotors.move(95);
+        // pros::delay(500);
+        // Lift::liftMotors.move(0);
+    }
+
+    void fiveRingRight(){
+        Drivetrain::chassis.setPose(52, 24, 90);
+        Drivetrain::chassis.moveToPoint(34, 24, 1000, {.forwards=false});
+        Drivetrain::chassis.moveToPoint(24, 24, 500, {.forwards=false, .maxSpeed=70});
+        Drivetrain::chassis.waitUntilDone();
+        Clamp::close();
+        Intake::intake();
+        pros::delay(200);
+        Drivetrain::chassis.turnToHeading(-90, 1000);
+        Drivetrain::chassis.moveToPose(15.5, 39, 0, 1000);
+        Drivetrain::chassis.moveToPoint(15.5, 60, 1000, {.maxSpeed=80});
+        Drivetrain::chassis.waitUntilDone();
+        Intake::hold();
+        Drivetrain::chassis.swingToHeading(-90, DriveSide::RIGHT, 1000);
+        Drivetrain::chassis.moveToPoint(17, 60, 2000, {.forwards=false});
+        Drivetrain::chassis.waitUntilDone();
+        Intake::intake();
+        Drivetrain::chassis.moveToPoint(28, 36, 1000);
+        Drivetrain::chassis.moveToPoint(67, 74, 2000);
+        Drivetrain::chassis.waitUntilDone();
+        pros::delay(500);
+        Drivetrain::chassis.moveToPoint(45, 45, 1000, {.forwards=false});
+        Drivetrain::chassis.moveToPoint(18, 18, 1000);
+        Drivetrain::chassis.turnToHeading(-135, 1000);
+        Lift::liftMotors.move(100);
+        pros::delay(500);
+        Lift::liftMotors.move(0);
+    }
+
+    void fiveRingLeft(){
+        Drivetrain::chassis.setPose(-52, 24, 360 - 90);
+        Drivetrain::chassis.moveToPoint(-34, 24, 1000, {.forwards=false});
+        Drivetrain::chassis.moveToPoint(-24, 24, 500, {.forwards=false, .maxSpeed=70});
+        Drivetrain::chassis.waitUntilDone();
+        Clamp::close();
+        Intake::intake();
+        pros::delay(200);
+        Drivetrain::chassis.turnToHeading(360 + 90, 1000);
+        Drivetrain::chassis.moveToPose(-15.5, 39, 360 - 0, 1000);
+        Drivetrain::chassis.moveToPoint(-15.5, 60, 1000, {.maxSpeed=80});
+        Drivetrain::chassis.waitUntilDone();
+        Intake::hold();
+        Drivetrain::chassis.swingToHeading(360 + 90, DriveSide::RIGHT, 1000);
+        Drivetrain::chassis.moveToPoint(-17, 60, 2000, {.forwards=false});
+        Drivetrain::chassis.waitUntilDone();
+        Controller::breakPoint();
+        Intake::intake();
+        Drivetrain::chassis.moveToPoint(-28, 36, 1000);
+        Drivetrain::chassis.moveToPoint(-67, 74, 2000);
+        Drivetrain::chassis.waitUntilDone();
+        pros::delay(500);
+        Drivetrain::chassis.moveToPoint(-45, 45, 1000, {.forwards=false});
+        Drivetrain::chassis.moveToPoint(-18, 18, 1000);
+        Drivetrain::chassis.turnToHeading(360 + 135, 1000);
+        Lift::liftMotors.move(100);
+        pros::delay(500);
+        Lift::liftMotors.move(0);
+    }
+
+    void safeAWP() {
+        Drivetrain::chassis.setPose(-55, -12, 180);
+        Drivetrain::chassis.moveToPoint(-55, 0, 1000, {.forwards = false});
+        Drivetrain::chassis.turnToHeading(-90, 1000);
+        Drivetrain::chassis.moveToPoint(-55, 0, 1000, {.forwards = false, .maxSpeed=50});
+        Drivetrain::chassis.waitUntilDone();
+        Intake::intake();
+        pros::delay(300);
+        Drivetrain::chassis.moveToPoint(41, 13, 1000);
+        Drivetrain::chassis.moveToPoint(22, 25, 1000, {.forwards=false, .maxSpeed= 80});
+        Drivetrain::chassis.waitUntilDone();
+        pros::delay(200);
+        Clamp::close();
+        Intake::intake();
+        Drivetrain::chassis.moveToPoint(24, 56, 1000);
+        Drivetrain::chassis.moveToPoint(30, 30, 1000, {.forwards=false});
+        Drivetrain::chassis.moveToPoint(21, 21, 1000);
     }
 }
