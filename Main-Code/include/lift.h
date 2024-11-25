@@ -6,5 +6,5 @@ namespace Lift
     extern pros::Rotation liftRot;
     extern PID liftPID;
 
-    extern void liftMove(int angle);
+    extern int liftMove(int angle);
 }

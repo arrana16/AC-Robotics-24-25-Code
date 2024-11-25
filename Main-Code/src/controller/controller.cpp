@@ -11,7 +11,7 @@ namespace Controller
     double yexp = 2.8;
     double rotexp = 5;
     bool PTO = false;
-    int liftAngle = 186;
+    int liftAngle = 285;
 
     bool closed = false;
 
@@ -77,6 +77,17 @@ namespace Controller
             Doinker::up();
         }
 
+        if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2))
+        {
+            liftAngle = 313;
+        }
+        else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2))
+        {
+            liftAngle = 410;
+        } else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+            liftAngle = 288;
+        }
+
         if (y >= 0)
         {
             y = (pow(y, yexp) * 127) / pow(127, yexp);
@@ -112,6 +123,7 @@ namespace Controller
         rot *= 0.8;
 
         Movement::simpleDrive(y, rot);
+        Lift::liftMove(liftAngle);
 
         lasty = y;
     }
