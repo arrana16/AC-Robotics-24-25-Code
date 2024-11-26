@@ -2,7 +2,7 @@
 
 namespace ColorSorter
 {
-    pros::Optical optical(OPTICAL_PORT);
+    pros::Optical optical('A');
 
     void sortTaskFunc(void* param)
     {
@@ -13,7 +13,7 @@ namespace ColorSorter
             printf("Red value: %lf \n", rgb.red);
             printf("Green value: %lf \n", rgb.green);
             printf("Blue value: %lf \n", rgb.blue);
-            pros::delay(RUNTIME_DELAY);
+            pros::delay(20);
         }
     }
 }

@@ -38,8 +38,6 @@
 #include "lemlib/api.hpp"
 #include "robodash/api.h"
 
-#include "ports.h"
-
 #include "util/timer.h"
 #include "util/coordinates.h"
 #include "pid/pid.h"
