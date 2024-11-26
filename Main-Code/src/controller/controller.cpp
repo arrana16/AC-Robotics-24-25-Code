@@ -23,24 +23,23 @@ namespace Controller
         int y = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
         int rot = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
 
-        if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1))
-        {
-            // Intake
-            Intake::intake();
-        }
-        else
-        {
-            Intake::hold();
-        }
+        // if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1))
+        // {
+        //     Intake::intake();
+        // }
+        // else
+        // {
+        //     Intake::hold();
+        // }
 
-        if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1))
-        {
-            Intake::outtake();
-        }
-        else if (!master.get_digital(pros::E_CONTROLLER_DIGITAL_R1))
-        {
-            Intake::hold();
-        }
+        // if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1))
+        // {
+        //     Intake::outtake();
+        // }
+        // else if (!master.get_digital(pros::E_CONTROLLER_DIGITAL_R1))
+        // {
+        //     Intake::hold();
+        // }
 
         // if (master.get_digital(pros::E_CONTROLLER_DIGITAL_A))
         // {
