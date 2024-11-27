@@ -323,21 +323,21 @@ namespace Auton
     }
 
     void safeAWP() {
-        Drivetrain::chassis.setPose(-55, -12, 180);
-        Drivetrain::chassis.moveToPoint(-55, 0, 1000, {.forwards = false});
-        Drivetrain::chassis.turnToHeading(-90, 1000);
-        Drivetrain::chassis.moveToPoint(-55, 0, 1000, {.forwards = false, .maxSpeed=50});
-        Drivetrain::chassis.waitUntilDone();
-        Intake::intake();
-        pros::delay(300);
-        Drivetrain::chassis.moveToPoint(41, 13, 1000);
-        Drivetrain::chassis.moveToPoint(22, 25, 1000, {.forwards=false, .maxSpeed= 80});
-        Drivetrain::chassis.waitUntilDone();
+        Drivetrain::chassis.setPose(54, 12, 131);
+        Drivetrain:chassis.moveToPoint(59, 8, 350);
+        while (Lift::liftRot.get_position()/100 < 458) {
+            Lift::liftMove(460);
+        }
         pros::delay(200);
+    
+        Drivetrain::chassis.moveToPoint(45, 24.5, 2000, {.forwards = false});
+         while (Lift::liftRot.get_position()/100 > 290) {
+            Lift::liftMove(290);
+        }
+        Drivetrain::chassis.turnToHeading(90, 1000);
+        Drivetrain::chassis.moveToPoint(20, 24.5, 2000, {.forwards = false, .maxSpeed=80});
+        Drivetrain::chassis.waitUntilDone();
         Clamp::close();
-        Intake::intake();
-        Drivetrain::chassis.moveToPoint(24, 56, 1000);
-        Drivetrain::chassis.moveToPoint(30, 30, 1000, {.forwards=false});
-        Drivetrain::chassis.moveToPoint(21, 21, 1000);
+
     }
 }

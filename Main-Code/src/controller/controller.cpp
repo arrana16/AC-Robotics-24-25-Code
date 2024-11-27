@@ -84,7 +84,7 @@ namespace Controller
         {
             liftAngle = 410;
         } else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
-            liftAngle = 288;
+            liftAngle = 295;
         }
 
         if (y >= 0)

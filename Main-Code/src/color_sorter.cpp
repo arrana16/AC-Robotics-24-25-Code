@@ -1,3 +1,4 @@
+#include "intake/intake.h"
 #include "main.h"
 
 namespace ColorSorter
@@ -17,10 +18,10 @@ namespace ColorSorter
             if (Controller::master.get_digital(pros::E_CONTROLLER_DIGITAL_R1))
             {
                 Intake::intake();
-                if (Presets::side == "blue" && proximity > 120)
+                if (Presets::side == "blue" && proximity > 20)
                 {
                     // If disk is red
-                    if (hue < 10.0)
+                    if (hue < 40.0)
                     {
                         found = true;
                         // pros::delay(1500);
@@ -44,23 +45,25 @@ namespace ColorSorter
                     }
                 }
             }
-            else
+            else if (Controller::master.get_digital(pros::E_CONTROLLER_DIGITAL_L1))
             {
+                Intake::outtake();
+            } else {
                 Intake::hold();
             }
 
             if (found) {
-                pros::delay(55);
-                // Intake::hold();
-                Intake::outtake();
-                pros::delay(150);
+                int initPos = Intake::intakeMotor.get_position();
+                while ((Intake::intakeMotor.get_position() - initPos) < 600){}
+                Intake::hold();
+                pros::delay(200);
                 found = false;
             }
 
             std::cout << "Hue: " + std::to_string(hue) << std::endl;
             std::cout << "Proximity: " + std::to_string(proximity) << std::endl;
 
-            pros::delay(20);
+            pros::delay(10);
         }
 
     }
