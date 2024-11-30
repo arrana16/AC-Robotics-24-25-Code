@@ -11,7 +11,7 @@ namespace Controller
     double yexp = 2.8;
     double rotexp = 5;
     bool PTO = false;
-    int liftAngle = 285;
+    int liftAngle = 295;
 
     bool closed = false;
 
@@ -78,13 +78,15 @@ namespace Controller
 
         if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2))
         {
-            liftAngle = 313;
+            liftAngle = 316;
         }
         else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2))
         {
             liftAngle = 410;
         } else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
-            liftAngle = 288;
+            liftAngle = 295;
+        } else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_UP)) {
+            liftAngle = 463;
         }
 
         if (y >= 0)

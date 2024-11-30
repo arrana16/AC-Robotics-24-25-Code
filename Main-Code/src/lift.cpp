@@ -4,7 +4,7 @@ namespace Lift
 {
     pros::MotorGroup liftMotors({19});
     pros::Rotation liftRot(4);
-    PID liftPID(0.015, 0.02, 0, false, 0);
+    PID liftPID(0.022, 0.02, 0, false, 0);
 
     int liftMove(int angle) {
         int rot_angle = liftRot.get_position(); 
