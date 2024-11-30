@@ -352,8 +352,8 @@ namespace Auton
         Drivetrain::chassis.waitUntilDone();
         pros::delay(250);
         // Controller::breakPoint();
-        Drivetrain::chassis.swingToHeading(-10, DriveSide::LEFT, 1000);
-        Drivetrain::chassis.moveToPoint(12, 44, 1000, {.maxSpeed=70});
+        Drivetrain::chassis.swingToHeading(-4, DriveSide::LEFT, 1000);
+        Drivetrain::chassis.moveToPoint(14, 44, 1000, {.maxSpeed=70});
         // Drivetrain::chassis.moveToPoint(10.5, 47, 3000, {.forwards=false, .maxSpeed=80 });
         Drivetrain::chassis.waitUntilDone();
         // Drivetrain::chassis.swingToHeading(90, DriveSide::RIGHT, 1000);
@@ -381,7 +381,7 @@ namespace Auton
     }
 
     void safeAWPLeft() {
-        Drivetrain::chassis.setPose(52.5, -14.5, 131);
+        Drivetrain::chassis.setPose(52.5, -14.5, 49);
         Drivetrain:chassis.moveToPoint(59, -9, 350);
         while (Lift::liftRot.get_position()/100 < 465) {
             Lift::liftMove(463);
@@ -410,8 +410,8 @@ namespace Auton
         Drivetrain::chassis.waitUntilDone();
         pros::delay(250);
         // Controller::breakPoint();
-        Drivetrain::chassis.swingToHeading(-170, DriveSide::LEFT, 1000);
-        Drivetrain::chassis.moveToPoint(12, -44, 1000, {.maxSpeed=70});
+        Drivetrain::chassis.swingToHeading(-176, DriveSide::LEFT, 1000);
+        Drivetrain::chassis.moveToPoint(14, -44, 1000, {.maxSpeed=70});
         // Drivetrain::chassis.moveToPoint(10.5, 47, 3000, {.forwards=false, .maxSpeed=80 });
         Drivetrain::chassis.waitUntilDone();
         // Drivetrain::chassis.swingToHeading(90, DriveSide::RIGHT, 1000);
