@@ -52,13 +52,13 @@ namespace ColorSorter
                 Intake::hold();
             }
 
-            if (found) {
-                int initPos = Intake::intakeMotor.get_position();
-                while ((Intake::intakeMotor.get_position() - initPos) < 600){}
-                Intake::hold();
-                pros::delay(200);
-                found = false;
-            }
+            // if (found) {
+            //     int initPos = Intake::intakeMotor.get_position();
+            //     while ((Intake::intakeMotor.get_position() - initPos) < 600){}
+            //     Intake::hold();
+            //     pros::delay(200);
+            //     found = false;
+            // }
 
             std::cout << "Hue: " + std::to_string(hue) << std::endl;
             std::cout << "Proximity: " + std::to_string(proximity) << std::endl;

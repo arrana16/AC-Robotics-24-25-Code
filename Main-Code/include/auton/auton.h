@@ -20,5 +20,6 @@ namespace Auton
     extern void GoalRushRight();
     extern void fiveRingRight();
     extern void fiveRingLeft();
-    extern void safeAWP();
+    extern void safeAWPRight();
+    extern void safeAWPLeft();
 }

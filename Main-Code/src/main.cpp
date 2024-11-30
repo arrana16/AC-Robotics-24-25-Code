@@ -41,7 +41,7 @@ void initialize()
 
 	Drivetrain::chassis.calibrate();
 // 
-	autonomous();
+	// autonomous();
 
 }
 
@@ -78,7 +78,7 @@ void competition_initialize() {}
 void autonomous() 
 {
 	std::string a = "a";
-	Auton::safeAWP();
+	Auton::safeAWPRight();
 	// Drivetrain::chassis.setPose(0, 0, 0);
 
 	// Drivetrain::chassis.moveToPoint(0, 96, 5000);

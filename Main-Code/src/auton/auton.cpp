@@ -322,22 +322,153 @@ namespace Auton
         Lift::liftMotors.move(0);
     }
 
-    void safeAWP() {
-        Drivetrain::chassis.setPose(54, 12, 131);
-        Drivetrain:chassis.moveToPoint(59, 8, 350);
-        while (Lift::liftRot.get_position()/100 < 458) {
-            Lift::liftMove(460);
+    void safeAWPRight() {
+        Drivetrain::chassis.setPose(52.5, 14.5, 131);
+        Drivetrain:chassis.moveToPoint(59, 9, 350);
+        while (Lift::liftRot.get_position()/100 < 465) {
+            Lift::liftMove(463);
         }
-        pros::delay(200);
-    
-        Drivetrain::chassis.moveToPoint(45, 24.5, 2000, {.forwards = false});
-         while (Lift::liftRot.get_position()/100 > 290) {
-            Lift::liftMove(290);
-        }
-        Drivetrain::chassis.turnToHeading(90, 1000);
-        Drivetrain::chassis.moveToPoint(20, 24.5, 2000, {.forwards = false, .maxSpeed=80});
+
+        
+        
+        pros::Task task{[=] {
+            int startTime = pros::millis();
+            while (pros::millis() - startTime < 11000) {
+                Lift::liftMove(292);
+            }
+
+        }};
+        pros::delay(250);
+        Drivetrain::chassis.moveToPoint(42, 11, 1000, {.forwards = false});
+
+
+        Drivetrain::chassis.moveToPoint(19.5, 23, 1500, {.forwards = false, .maxSpeed=45});
         Drivetrain::chassis.waitUntilDone();
+        // Controller::breakPoint();
+        Clamp::close();
+        Drivetrain::chassis.waitUntilDone();
+        Intake::intake();
+        Drivetrain::chassis.moveToPoint(14, 31.5, 2000);
+        Drivetrain::chassis.waitUntilDone();
+        pros::delay(250);
+        // Controller::breakPoint();
+        Drivetrain::chassis.swingToHeading(-10, DriveSide::LEFT, 1000);
+        Drivetrain::chassis.moveToPoint(12, 44, 1000, {.maxSpeed=70});
+        // Drivetrain::chassis.moveToPoint(10.5, 47, 3000, {.forwards=false, .maxSpeed=80 });
+        Drivetrain::chassis.waitUntilDone();
+        // Drivetrain::chassis.swingToHeading(90, DriveSide::RIGHT, 1000);
+        // Drivetrain::chassis.waitUntilDone();
+        // Controller::breakPoint();
+        Intake::hold();
+        pros::delay(250);
+        Intake::intake();
+        Drivetrain::chassis.moveToPoint(34.5,35, 1500);
+        Drivetrain::chassis.waitUntilDone();
+        pros::delay(150);
+        Drivetrain::chassis.moveToPoint(70, 66, 1800, {.maxSpeed=90});
+        Drivetrain::chassis.waitUntilDone();
+        pros::delay(150);
+        Drivetrain::chassis.moveToPoint(45, 45, 1000, {.forwards=false});
+        Drivetrain::chassis.waitUntilDone();
+        // Intake::outtake();  
+        Drivetrain::chassis.moveToPoint(23, 29, 2000);
+        Drivetrain::chassis.turnToHeading(-135, 500);
+        Drivetrain::chassis.waitUntilDone();
+        Lift::liftMotors.move(100);
+        pros::delay(500);
+        Lift::liftMotors.move(0);
+
+    }
+
+    void safeAWPLeft() {
+        Drivetrain::chassis.setPose(52.5, -14.5, 131);
+        Drivetrain:chassis.moveToPoint(59, -9, 350);
+        while (Lift::liftRot.get_position()/100 < 465) {
+            Lift::liftMove(463);
+        }
+
+        
+        
+        pros::Task task{[=] {
+            int startTime = pros::millis();
+            while (pros::millis() - startTime < 11000) {
+                Lift::liftMove(292);
+            }
+
+        }};
+        pros::delay(250);
+        Drivetrain::chassis.moveToPoint(42, -11, 1000, {.forwards = false});
+
+
+        Drivetrain::chassis.moveToPoint(19.5, -23, 1500, {.forwards = false, .maxSpeed=45});
+        Drivetrain::chassis.waitUntilDone();
+        // Controller::breakPoint();
+        Clamp::close();
+        Drivetrain::chassis.waitUntilDone();
+        Intake::intake();
+        Drivetrain::chassis.moveToPoint(14, -31.5, 2000);
+        Drivetrain::chassis.waitUntilDone();
+        pros::delay(250);
+        // Controller::breakPoint();
+        Drivetrain::chassis.swingToHeading(-170, DriveSide::LEFT, 1000);
+        Drivetrain::chassis.moveToPoint(12, -44, 1000, {.maxSpeed=70});
+        // Drivetrain::chassis.moveToPoint(10.5, 47, 3000, {.forwards=false, .maxSpeed=80 });
+        Drivetrain::chassis.waitUntilDone();
+        // Drivetrain::chassis.swingToHeading(90, DriveSide::RIGHT, 1000);
+        // Drivetrain::chassis.waitUntilDone();
+        // Controller::breakPoint();
+        Intake::hold();
+        pros::delay(250);
+        Intake::intake();
+        Drivetrain::chassis.moveToPoint(34.5,-35, 1500);
+        Drivetrain::chassis.waitUntilDone();
+        pros::delay(150);
+        Drivetrain::chassis.moveToPoint(70, -66, 1800, {.maxSpeed=90});
+        Drivetrain::chassis.waitUntilDone();
+        pros::delay(150);
+        Drivetrain::chassis.moveToPoint(45, -45, 1000, {.forwards=false});
+        Drivetrain::chassis.waitUntilDone();
+        // Intake::outtake();  
+        Drivetrain::chassis.moveToPoint(23, -29, 2000);
+        Drivetrain::chassis.turnToHeading(-45, 500);
+        Drivetrain::chassis.waitUntilDone();
+        Lift::liftMotors.move(100);
+        pros::delay(500);
+        Lift::liftMotors.move(0);
+
+    }
+
+    void skills() {
+        using namespace Drivetrain;
+        // Wall Stake Task
+        pros::Task task{[=] {
+            pros::delay(9300);
+            int currentTime = pros::millis();
+            while (pros::millis() - currentTime < 3000) {
+                Lift::liftMove(320);
+            }
+        }};
+        // Alliance Stake
+        chassis.setPose(-66, 0, -90);
+        chassis.waitUntilDone();
+        Intake::intake();
+        pros::delay(300);
+        Intake::hold();
+
+        // MOGO Clamp
+        chassis.moveToPoint(-61, -16, 1000);
+        chassis.turnToHeading(-60, 1000);
+        chassis.moveToPoint(-44, -25, 1000, {.forwards=false});
+        chassis.waitUntilDone();
         Clamp::close();
 
+        // First 3 Rings
+        chassis.moveToPoint(-21, -22, 1000);
+        chassis.moveToPoint(24, -47, 4000);
+        chassis.moveToPoint(24, -24, 1000);
+        chassis.moveToPoint(0, -57, 1500);
+        chassis.waitUntilDone();
+        pros::delay(500);
+        Intake::intakeMotor.move(100);
     }
 }
