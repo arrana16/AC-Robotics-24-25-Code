@@ -7,14 +7,17 @@
 #include <string>
 #include <vector>
 
-void test1(){}
-void test2(){}
-void test3(){}
+void test1() {}
+void test2() {}
+void test3() {}
 rd::Selector selector({
-        {"Best auton", test1},
-        {"Simple auton", test2},
-        {"Good auton", test3},
-    });
+	{"Best auton", test1},
+	{"Simple auton", test2},
+	{"Good auton", test3},
+});
+
+// Initialize state manager
+StateManager stageManager = StateManager(Lift::liftMotors, Lift::liftRot);
 
 /**
  * A callback function for LLEMU's center button.
@@ -36,13 +39,18 @@ void on_center_button()
 void initialize()
 {
 	pros::lcd::initialize();
-
 	pros::lcd::register_btn1_cb(on_center_button);
-
 	Drivetrain::chassis.calibrate();
-// 
-	// autonomous();
 
+	// Lift state task
+	pros::Task liftControlTask([]
+							   {
+		while(true)
+		{
+			stageManager.liftControl();
+		} });
+
+	// autonomous();
 }
 
 /**
@@ -75,7 +83,7 @@ void competition_initialize() {}
  * from where it left off.
  */
 
-void autonomous() 
+void autonomous()
 {
 	std::string a = "a";
 	Auton::safeAWPRight();
@@ -100,17 +108,16 @@ void autonomous()
  */
 
 void opcontrol()
-{	
+{
 	pros::Task sortTask(ColorSorter::sortTaskFunc);
 
-    while (true)
-	{	
+	while (true)
+	{
 		Controller::listenAnalog();
 
 		pros::lcd::print(0, "X: %d", Lift::liftRot.get_position());
 		pros::lcd::print(1, "Y: %f", Drivetrain::chassis.getPose().y);
 
 		pros::delay(20);
-
 	}
 }
