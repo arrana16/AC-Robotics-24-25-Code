@@ -50,8 +50,8 @@
 #include "clamp/clamp.h"
 #include "doinker.h"
 #include "lift.h"
-#include "color_sorter.h"
-#include "state/state.h"
+#include "intake/color_sorter.h"
+#include "state/state_manager.h"
 
 /**
  * You should add more #includes here

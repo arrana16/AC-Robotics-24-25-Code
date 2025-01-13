@@ -41,17 +41,9 @@ namespace Controller
             Intake::hold();
         }
 
-        // if (master.get_digital(pros::E_CONTROLLER_DIGITAL_A))
-        // {
-        //     Clamp::close();
-        // }
-        // if (master.get_digital(pros::E_CONTROLLER_DIGITAL_B))
-        // {
-        //     Clamp::open();
-        // }
-
         if (master.get_digital(pros::E_CONTROLLER_DIGITAL_X))
         {
+            StateManger::nextState();
         }
         if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y))
         {
@@ -83,9 +75,13 @@ namespace Controller
         else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2))
         {
             liftAngle = 410;
-        } else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+        }
+        else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN))
+        {
             liftAngle = 295;
-        } else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_UP)) {
+        }
+        else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_UP))
+        {
             liftAngle = 463;
         }
 
@@ -129,10 +125,13 @@ namespace Controller
         lasty = y;
     }
 
-    void breakPoint() {
+    void breakPoint()
+    {
         bool breakPoint = false;
-        while (!breakPoint) {
-            if (master.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
+        while (!breakPoint)
+        {
+            if (master.get_digital(pros::E_CONTROLLER_DIGITAL_A))
+            {
                 breakPoint = true;
             }
         }
