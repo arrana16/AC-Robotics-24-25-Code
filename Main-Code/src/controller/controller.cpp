@@ -9,11 +9,13 @@ namespace Controller
     int lasty = 2;
     int limit = 2;
     double yexp = 2.8;
-    double rotexp = 5;
+    double rotexp = 5.0;
     bool PTO = false;
     int liftAngle = 295;
 
     bool closed = false;
+
+    bool doinkerState = false;
 
     // Methods
     void listenAnalog()
@@ -43,7 +45,7 @@ namespace Controller
 
         if (master.get_digital(pros::E_CONTROLLER_DIGITAL_X))
         {
-            StateManger::nextState();
+            // StateManager::nextState();
         }
         if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y))
         {
@@ -59,13 +61,28 @@ namespace Controller
             closed = !closed;
         }
 
-        if (master.get_digital(pros::E_CONTROLLER_DIGITAL_A))
+        // if (master.get_digital(pros::E_CONTROLLER_DIGITAL_A))
+        // {
+        //     Doinker::down();
+        // }
+        // else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_B))
+        // {
+        //     Doinker::up();
+        // }
+
+        // Tracks whether the Doinker is up or down
+
+        if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A))
         {
-            Doinker::down();
-        }
-        else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_B))
-        {
-            Doinker::up();
+            doinkerState = !doinkerState; // Toggle the state
+            if (doinkerState)
+            {
+                Doinker::down(); // Activate the "down" action
+            }
+            else
+            {
+                Doinker::up(); // Activate the "up" action
+            }
         }
 
         if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2))
@@ -117,7 +134,8 @@ namespace Controller
             y = y - abs(rot) * 0.2;
         }
 
-        rot *= 0.8;
+        rot *= 0.6;
+        y *= 0.6;
 
         Movement::simpleDrive(y, rot);
         Lift::liftMove(liftAngle);

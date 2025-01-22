@@ -9,7 +9,7 @@ namespace Drivetrain
     extern pros::MotorGroup rightMotors;
     // extern pros::MotorGroup leftPTO;
     // extern pros::MotorGroup rightPTO;
- 
+
     // Drivetrain
     extern lemlib::Drivetrain drivetrain;
     extern lemlib::ControllerSettings lateralController;
@@ -18,17 +18,17 @@ namespace Drivetrain
     // Odometry
     extern pros::Imu imu;
     extern lemlib::OdomSensors sensors;
-    extern pros::Rotation horizontalEncoder;    
+    extern pros::Rotation horizontalEncoder;
     extern pros::Rotation verticalEncoder;
     extern lemlib::TrackingWheel horizontalTrackingWheel;
     extern lemlib::TrackingWheel verticalTrackingWheel;
 
     // Chassis
     extern lemlib::Chassis chassis;
-} 
+}
 
 namespace Movement
 {
-    extern void simpleDrive(int& y, int& turn);
-    extern void simplePTODrive(int& y, int& turn);
+    extern void simpleDrive(int &y, int &turn);
+    extern void simplePTODrive(int &y, int &turn);
 }

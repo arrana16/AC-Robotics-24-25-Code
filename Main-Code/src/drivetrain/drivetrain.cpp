@@ -4,39 +4,39 @@ namespace Drivetrain
 {
     /* Motors */
     pros::MotorGroup leftMotors({-1, -11, -15});
-    pros::MotorGroup rightMotors({3, 6 , 10});
+    pros::MotorGroup rightMotors({3, 6, 10});
     // pros::MotorGroup leftPTO({1, 2});
     // pros::MotorGroup rightPTO({3, 4});
 
     // Drivetrain
     lemlib::Drivetrain drivetrain(
-        &leftMotors,              // left motor group
-        &rightMotors,             // right motor group
-        10,                       // 10 inch track width
+        &leftMotors,                // left motor group
+        &rightMotors,               // right motor group
+        10,                         // 10 inch track width
         lemlib::Omniwheel::NEW_325, // using new 4" omnis
-        450,                      // drivetrain rpm is 360
-        2                         // horizontal drift is 2 (for now)
+        450,                        // drivetrain rpm is 360
+        2                           // horizontal drift is 2 (for now)
     );
     lemlib::ControllerSettings lateralController(
-        3.9,   // proportional gain (kP)
-        0.0,   // integral gain (kI)
-        0.05,  // derivative gain (kD)
-        3,   // anti windup
-        0.1,   // small error range, in inches
-        100, // small error range timeout, in milliseconds
-        0.5,   // large error range, in inches
-        500, // large error range timeout, in milliseconds
-        0    // maximum acceleration (slew)
+        3.9,  // proportional gain (kP)
+        0.0,  // integral gain (kI)
+        0.05, // derivative gain (kD)
+        3,    // anti windup
+        0.1,  // small error range, in inches
+        100,  // small error range timeout, in milliseconds
+        0.5,  // large error range, in inches
+        500,  // large error range timeout, in milliseconds
+        0     // maximum acceleration (slew)
     );
     lemlib::ControllerSettings angularController(
-        3.4,  // proportional gain (kP)
-        0.0,  // integral gain (kI)
-        10, // derivative gain (kD)
-        0,  // anti windup
-        1,  // small error range, in inches
-        800,  // small error range timeout, in milliseconds
-        2,  // large error range, in inches
-        0,  // large error range timeout, in milliseconds
+        3.4, // proportional gain (kP)
+        0.0, // integral gain (kI)
+        10,  // derivative gain (kD)
+        0,   // anti windup
+        1,   // small error range, in inches
+        800, // small error range timeout, in milliseconds
+        2,   // large error range, in inches
+        0,   // large error range timeout, in milliseconds
         10   // maximum acceleration (slew)
     );
 
@@ -59,8 +59,7 @@ namespace Drivetrain
         drivetrain,
         lateralController,
         angularController,
-        sensors
-    );
+        sensors);
 }
 
 // Movement

@@ -1,42 +1,47 @@
 #include "intake/intake.h"
 #include "main.h"
 
+using namespace std;
+
 namespace ColorSorter
 {
     pros::Optical optical(17);
 
-    void sortTaskFunc(void* param)
+    int previous_hue = -1;
+    int previous_proximity = -1;
+
+    void sortTaskFunc(void *param)
     {
-        double hue;
-        int32_t proximity;
+        int hue;
+        int proximity;
 
         bool found = false;
         while (true)
         {
-            hue = optical.get_hue();
-            proximity = optical.get_proximity();
+            hue = (int)optical.get_hue();
+            proximity = (int)optical.get_proximity();
             if (Controller::master.get_digital(pros::E_CONTROLLER_DIGITAL_R1))
             {
                 Intake::intake();
-                if (Presets::side == "blue" && proximity > 20)
+                if (Presets::side == "blue")
                 {
                     // If disk is red
-                    if (hue < 40.0)
+                    if (hue < 40.0 && proximity > 200)
                     {
-                        found = true;
+                        cout << "-------------------- Found RED..." << endl;
+                        
+                        // found = true;
                         // pros::delay(1500);
                         // Intake::hold();
-                        
-                        std::cout << "found Hue: " + std::to_string(hue) << std::endl;
-                        std::cout << "found Proximity: " + std::to_string(proximity) << std::endl;
+
                         // pros::delay(100);
                         // Intake::intake();
                     }
                 }
-                else if (Presets::side == "red" && proximity > 200)
+                else if (Presets::side == "red")
                 {
                     // If disk is blue
-                    if (180.0 < hue)
+                    if (150.0 < hue) // 180
                     {
                         pros::delay(1500);
                         Intake::hold();
@@ -48,7 +53,9 @@ namespace ColorSorter
             else if (Controller::master.get_digital(pros::E_CONTROLLER_DIGITAL_L1))
             {
                 Intake::outtake();
-            } else {
+            }
+            else
+            {
                 Intake::hold();
             }
 
@@ -60,11 +67,16 @@ namespace ColorSorter
             //     found = false;
             // }
 
-            std::cout << "Hue: " + std::to_string(hue) << std::endl;
-            std::cout << "Proximity: " + std::to_string(proximity) << std::endl;
+            // Check value equalities to avoid overprinting
+            if (previous_hue != hue && previous_proximity != proximity)
+            {
+                cout << "Hue: " + to_string(hue) << " | " << "Proximity: " + to_string(proximity) << endl;
+                previous_hue = hue;
+                previous_proximity = proximity;
+            }
 
+            // Clock
             pros::delay(10);
         }
-
     }
 }

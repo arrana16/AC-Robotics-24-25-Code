@@ -19,13 +19,13 @@ void initialize()
 	Drivetrain::chassis.calibrate();
 
 	// Lift state task
-	pros::Task liftControlTask([]
-							   {
-		while(true)
-		{
-			StateManger::liftControl();
-			pros::delay(10);
-		} });
+	// pros::Task liftControlTask([]
+	// 						   {
+	// 	while(true)
+	// 	{
+	// 		StateManger::liftControl();
+	// 		pros::delay(10);
+	// 	} });
 
 	// autonomous();
 }
@@ -46,7 +46,7 @@ void autonomous()
 
 void opcontrol()
 {
-	pros::Task sortTask(ColorSorter::sortTaskFunc);
+	// pros::Task sortTask(ColorSorter::sortTaskFunc);
 
 	while (true)
 	{
