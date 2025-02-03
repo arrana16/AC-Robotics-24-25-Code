@@ -8,7 +8,7 @@ namespace Controller
 
     int lasty = 2;
     int limit = 2;
-    double yexp = 2.8;
+    double yexp = 1;
     double rotexp = 5.0;
     bool PTO = false;
     int liftAngle = 295;
