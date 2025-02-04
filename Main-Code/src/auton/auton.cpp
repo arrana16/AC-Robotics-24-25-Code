@@ -516,6 +516,46 @@ namespace Auton
         chassis.moveToPoint(-24, 47, 1000);
         chassis.moveToPoint(-47, 47, 1000);
         // chassis.moveT
+    }
 
+    void priority1Blue()
+    {
+        // Set up position
+        chassis.setPose(56, -24, 25);
+
+        // Move to alliance stake
+        chassis.moveToPose(67, 0, 90, 1000, {.minSpeed = 100, .earlyExitRange = 3});
+
+        // Move to and get disk to to the left
+        chassis.moveToPose(60, 0, 270, 1000, {.minSpeed = 100, .earlyExitRange = 3});
+        Intake::intake();
+
+        // Move to left disk again
+        chassis.moveToPose(48, 0, 270, 1000, {.minSpeed = 100, .earlyExitRange = 3});
+        Intake::intake();
+
+        // Get G1B
+        chassis.moveToPose(27, -21, 40, 1000, {.minSpeed = 100, .earlyExitRange = 3});
+        Clamp::close();
+
+        // Get next disk
+        chassis.moveToPose(25, -44, 180, 1000, {.minSpeed = 100, .earlyExitRange = 3});
+        Intake::intake();
+
+        // Go to bottom right corner
+        chassis.moveToPose(63, -65, 90, 1000, {.minSpeed = 100, .earlyExitRange = 3});
+        Intake::intake();
+        Intake::intake();
+
+        // Touch ladder
+        chassis.moveToPose(22, -5, 310, 1000, {.minSpeed = 100, .earlyExitRange = 3});
+    }
+
+    void priority2()
+    {
+    }
+
+    void priority3()
+    {
     }
 }

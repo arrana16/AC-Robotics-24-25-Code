@@ -134,8 +134,8 @@ namespace Controller
             y = y - abs(rot) * 0.2;
         }
 
-        rot *= 0.6;
-        y *= 0.6;
+        rot *= 0.4;
+        y *= 0.4;
 
         Movement::simpleDrive(y, rot);
         Lift::liftMove(liftAngle);

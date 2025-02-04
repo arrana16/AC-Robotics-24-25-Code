@@ -22,4 +22,9 @@ namespace Auton
     extern void fiveRingLeft();
     extern void safeAWPRight();
     extern void safeAWPLeft();
+
+    // New autons
+    extern void priority1();
+    extern void priority2();
+    extern void priority3();
 }
