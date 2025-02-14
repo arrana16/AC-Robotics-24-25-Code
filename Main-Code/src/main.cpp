@@ -16,7 +16,7 @@ void initialize()
 	pros::lcd::initialize();
 	pros::lcd::register_btn1_cb(on_center_button);
 
-	Drivetrain::chassis.calibrate();
+	// Drivetrain::chassis.calibrate();
 
 	// Lift state task
 	// pros::Task liftControlTask([]
@@ -53,7 +53,6 @@ void opcontrol()
 		Controller::listenAnalog();
 
 		pros::lcd::print(0, "X: %d", Lift::liftRot.get_position());
-		pros::lcd::print(1, "Y: %f", Drivetrain::chassis.getPose().y);
 
 		pros::delay(20);
 	}

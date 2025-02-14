@@ -4,7 +4,7 @@
 namespace Intake
 {
     // Motor instance for intake
-    pros::Motor intakeMotor(2, pros::v5::MotorGears::blue, pros::MotorUnits::degrees);
+    pros::Motor intakeMotor(12, pros::v5::MotorGears::blue, pros::MotorUnits::degrees);
 
     // Function to intake the object
     void intake()

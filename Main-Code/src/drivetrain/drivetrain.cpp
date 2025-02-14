@@ -3,8 +3,8 @@
 namespace Drivetrain
 {
     /* Motors */
-    pros::MotorGroup leftMotors({-1, -11, -15});
-    pros::MotorGroup rightMotors({3, 6, 10});
+    pros::MotorGroup leftMotors({-15, 16, -17});
+    pros::MotorGroup rightMotors({18, -19, 20});
     // pros::MotorGroup leftPTO({1, 2});
     // pros::MotorGroup rightPTO({3, 4});
 
@@ -41,7 +41,7 @@ namespace Drivetrain
     );
 
     // Odometry
-    pros::Imu imu(16);
+    pros::Imu imu(21);
     pros::Rotation horizontalEncoder(12);
     pros::Rotation verticalEncoder(-8);
     lemlib::TrackingWheel horizontalTrackingWheel(&horizontalEncoder, 2, 2.4);

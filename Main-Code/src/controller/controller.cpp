@@ -11,7 +11,7 @@ namespace Controller
     double yexp = 1;
     double rotexp = 5.0;
     bool PTO = false;
-    int liftAngle = 295;
+    int liftAngle = 362;
 
     bool closed = false;
 
@@ -87,19 +87,19 @@ namespace Controller
 
         if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2))
         {
-            liftAngle = 316;
+            liftAngle = 440;
         }
         else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2))
         {
-            liftAngle = 410;
+            liftAngle = 933;
         }
         else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN))
         {
-            liftAngle = 295;
+            liftAngle = 362;
         }
         else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_UP))
         {
-            liftAngle = 463;
+            liftAngle = 1200;
         }
 
         if (y >= 0)
@@ -134,8 +134,8 @@ namespace Controller
             y = y - abs(rot) * 0.2;
         }
 
-        rot *= 0.4;
-        y *= 0.4;
+        // rot *= 0.4;
+        // y *= 0.4;
 
         Movement::simpleDrive(y, rot);
         Lift::liftMove(liftAngle);
