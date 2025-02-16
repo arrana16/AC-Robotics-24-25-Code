@@ -2,7 +2,7 @@
 
 namespace Doinker
 {
-    pros::adi::DigitalOut doinker('C');
+    pros::adi::DigitalOut doinker('A');
 
     void down()
     {

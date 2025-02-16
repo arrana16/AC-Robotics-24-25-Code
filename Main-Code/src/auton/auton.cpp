@@ -559,4 +559,40 @@ namespace Auton
     void priority3()
     {
     }
+
+    void newAWP() {
+        // WP AUTO
+
+	// liftAngle = 420;
+	// pros::delay(200);
+	// Drivetrain::chassis.setPose(-54.8, 16.5, 180);
+	// Intake::intakeMotor.move(90);
+	// pros::delay(500);
+	// Intake::intakeMotor.move(-30);
+	// pros::delay(200);
+	// Intake::intakeMotor.move(0);
+
+
+    //     Drivetrain::chassis.moveToPoint(-54.8, 11, 1000);
+    //     Drivetrain::chassis.turnToPoint(-70, -4, 1000);
+	// 	Drivetrain::chassis.waitUntilDone();
+	// 	liftAngle = 1200;
+	// 	pros::delay(500);
+	// 	liftAngle = 362;
+	// 	Drivetrain::chassis.turnToPoint(-23, 24, 1000, { .forwards = false});
+	// 	Drivetrain::chassis.moveToPoint(-23, 24, 1700, {.forwards = false, .maxSpeed = 60,});
+	// 	Drivetrain::chassis.waitUntilDone();
+	// 	Clamp::close();
+	// 	pros::delay(300);
+	// 	Drivetrain::chassis.turnToPoint(-23.6, 52.5, 1000);
+	// 	Intake::intakeMotor.move(127);
+	// 	Drivetrain::chassis.moveToPoint(-23.6, 57, 1000, {.maxSpeed = 60});
+	// 	Drivetrain::chassis.waitUntilDone();
+	// 	pros::delay(550);	
+	// 	Intake::intakeMotor.move(0);
+	// 	Drivetrain::chassis.turnToPoint(-15, 24, 1000);
+	// 	Drivetrain::chassis.moveToPoint(-15, 30, 1500, {.maxSpeed = 80});
+	// 	Drivetrain::chassis.waitUntilDone();
+	// 	liftAngle = 850;
+    }
 }
