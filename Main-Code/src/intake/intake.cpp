@@ -4,18 +4,18 @@
 namespace Intake
 {
     // Motor instance for intake
-    pros::Motor intakeMotor(2, pros::v5::MotorGears::blue, pros::MotorUnits::degrees);
+    pros::Motor intakeMotor(12, pros::v5::MotorGears::blue, pros::MotorUnits::degrees);
 
     // Function to intake the object
     void intake()
     {
-        intakeMotor.move(127);
+        intakeMotor.move(115);
     }
 
     // Function to outtake the object
     void outtake()
     {
-        intakeMotor.move(-127);
+        intakeMotor.move(-115);
     }
 
     // Function to possess the object

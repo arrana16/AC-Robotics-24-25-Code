@@ -2,9 +2,9 @@
 
 namespace Lift
 {
-    pros::MotorGroup liftMotors({19});
-    pros::Rotation liftRot(4);
-    PID liftPID(0.022, 0.02, 0, false, 0);
+    pros::MotorGroup liftMotors({9});
+    pros::Rotation liftRot(-7);
+    PID liftPID(0.003, 0.0, 0, false, 0);
 
     int liftMove(int angle)
     {

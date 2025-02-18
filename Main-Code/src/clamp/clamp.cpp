@@ -2,7 +2,7 @@
 
 namespace Clamp
 {
-    pros::adi::DigitalOut clamp('B');
+    pros::adi::DigitalOut clamp('C');
 
     void open()
     {
