@@ -24,7 +24,8 @@ namespace Auton
     extern void safeAWPLeft();
 
     // New autons
-    extern void priority1();
+    extern void priority1Blue();
+    extern void priority1Red();
     extern void priority2();
     extern void priority3();
 }

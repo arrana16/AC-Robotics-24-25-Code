@@ -381,8 +381,7 @@ namespace Auton
     void safeAWPLeft()
     {
         Drivetrain::chassis.setPose(52.5, -14.5, 49);
-    Drivetrain:
-        chassis.moveToPoint(59, -9, 350);
+        Drivetrain::chassis.moveToPoint(59, -9, 350);
         while (Lift::liftRot.get_position() / 100 < 465)
         {
             Lift::liftMove(463);
@@ -550,6 +549,40 @@ namespace Auton
 
         // Touch ladder
         chassis.moveToPose(22, -5, 310, 1000, {.minSpeed = 100});
+    }
+
+    void priority1Red()
+    {
+        // Set up position
+        chassis.setPose(56, -24, 25);
+
+        // Move to alliance stake
+        chassis.moveToPose(67, 0, 90 - 360, 1000, {.maxSpeed = 30});
+
+        // Move to and get disk to to the left
+        chassis.moveToPose(60, 0, 270 - 360, 1000, {.maxSpeed = 30});
+        Intake::intake();
+
+        // Move to left disk again
+        chassis.moveToPose(48, 0, 270 - 360, 1000, {.maxSpeed = 30});
+        Intake::intake();
+
+        // Get G1B
+        chassis.moveToPose(27, -21, 40 - 360, 1000);
+        Clamp::close();
+
+        // Get next disk
+        chassis.moveToPose(25, -44, 180 - 360, 1000, {.maxSpeed = 50});
+        Intake::intake();
+
+        // Go to bottom right corner
+        chassis.moveToPose(63, -65, 90 - 360, 1000);
+        chassis.moveToPose(63, -65, 90 - 360, 1000, {.maxSpeed = 20});
+        Intake::intake();
+        Intake::intake();
+
+        // Touch ladder
+        chassis.moveToPose(22, -5, 310 - 360, 1000, {.minSpeed = 100});
     }
 
     void priority2()

@@ -4,18 +4,16 @@
 
 namespace Drivetrain
 {
-    // Motors
+    // Left and right motors
     extern pros::MotorGroup leftMotors;
     extern pros::MotorGroup rightMotors;
-    // extern pros::MotorGroup leftPTO;
-    // extern pros::MotorGroup rightPTO;
 
-    // Drivetrain
+    // Drivetrain with controller settings
     extern lemlib::Drivetrain drivetrain;
     extern lemlib::ControllerSettings lateralController;
     extern lemlib::ControllerSettings angularController;
 
-    // Odometry
+    // Odometry and sensors
     extern pros::Imu imu;
     extern lemlib::OdomSensors sensors;
     extern pros::Rotation horizontalEncoder;
@@ -23,12 +21,14 @@ namespace Drivetrain
     extern lemlib::TrackingWheel horizontalTrackingWheel;
     extern lemlib::TrackingWheel verticalTrackingWheel;
 
-    // Chassis
+    // Chassis for driving
     extern lemlib::Chassis chassis;
 }
 
+/*
+ * Structure to store simple movement tasks limited to simpleDrive right now
+ */
 namespace Movement
 {
     extern void simpleDrive(int &y, int &turn);
-    extern void simplePTODrive(int &y, int &turn);
 }
