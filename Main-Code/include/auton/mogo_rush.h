@@ -1,6 +1,6 @@
 #include "main.h"
 
-namespace Priority3
+namespace MOGORush
 {
     /*
     Requires colour sorter
@@ -15,9 +15,6 @@ namespace Priority3
     8. Touch ladder
     */
 
-    extern void blueLeft();
-    extern void blueRight();
-
-    extern void redLeft();
-    extern void redRight();
+    extern void blue();
+    extern void red();
 }

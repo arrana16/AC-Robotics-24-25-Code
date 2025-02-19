@@ -1,6 +1,6 @@
 #include "main.h"
 
-namespace Priority1
+namespace AWPSafe
 {
     /*
     Requires a working colour sorter
@@ -14,9 +14,6 @@ namespace Priority1
     7. Touch ladder
     */
 
-    extern void blueLeft();
-    extern void blueRight();
-
-    extern void redLeft();
-    extern void redRight();
+    extern void blue();
+    extern void red();
 }

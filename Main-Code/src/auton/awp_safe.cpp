@@ -3,7 +3,7 @@
 using namespace pros;
 using namespace Drivetrain;
 
-namespace Priority1
+namespace AWPSafe
 {
     /*
     Requires a working colour sorter
@@ -17,7 +17,7 @@ namespace Priority1
     7. Touch ladder
     */
 
-    void blueLeft()
+    void blue()
     {
         // Get the current pose of the robot
         lemlib::Pose currentPose = chassis.getPose();
@@ -38,15 +38,7 @@ namespace Priority1
         
     }
 
-    void blueRight()
-    {
-    }
-
-    void redLeft()
-    {
-    }
-
-    void redRight()
+    void red()
     {
     }
 }

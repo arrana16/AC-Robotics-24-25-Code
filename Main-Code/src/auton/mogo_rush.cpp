@@ -3,7 +3,7 @@
 using namespace pros;
 using namespace Drivetrain;
 
-namespace Priority3
+namespace MOGORush
 {
     /*
     Requires colour sorter
@@ -18,7 +18,7 @@ namespace Priority3
     8. Touch ladder
     */
 
-    void blueLeft()
+    void blue()
     {
         // ----------------------- Get mobile goal and score on it --------------------------------
         // Define the target position (Key Goal at 0, -120)
@@ -67,9 +67,8 @@ namespace Priority3
         Intake::intake();                                // Start intaking rings
         chassis.moveToPoint(ringX, ringY, 50, {}, true); // Move carefully over rings
         chassis.waitUntilDone();
-    };
-    void blueRight() {};
 
-    void redLeft() {};
-    void redRight() {};
+        // ----------------------- Take right ring but don't score --------------------------------
+    };
+    void red() {};
 }

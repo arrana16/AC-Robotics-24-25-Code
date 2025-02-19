@@ -41,8 +41,9 @@
 /*
  * Auton files
  */
-#include "auton/priority1.h"
-#include "auton/priority3.h"
+#include "auton/awp_safe.h"
+#include "auton/mogo_rush.h"
+#include "auton/ring_side.h"
 
 /**
  * If you find doing pros::Motor() to be tedious and you'd prefer just to do
