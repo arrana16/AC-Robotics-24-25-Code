@@ -20,6 +20,7 @@ namespace MOGORush
 
     void blue()
     {
+        
         // ----------------------- Get mobile goal and score on it --------------------------------
         // Define the target position (Key Goal at 0, -120)
         float targetX = 0;
