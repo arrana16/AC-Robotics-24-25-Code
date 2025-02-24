@@ -37,6 +37,7 @@
 #include "lift.h"
 #include "intake/color_sorter.h"
 #include "state/state_manager.h"
+#include "global.h"
 
 /*
  * Auton files

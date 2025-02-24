@@ -1,21 +1,23 @@
-#include "intake/intake.h"
 #include "main.h"
 
 using namespace std;
 
 namespace ColorSorter
 {
-    pros::Optical optical(17);
-
-    int previous_hue = -1;
-    int previous_proximity = -1;
+    // Initialize optical sensor with port
+    pros::Optical optical(8);
 
     void sortTaskFunc(void *param)
     {
+        optical.set_led_pwm(100);
+
+        // Track hue and proximity
         int hue;
         int proximity;
+        double startPos = 0;
 
         bool found = false;
+
         while (true)
         {
             hue = (int)optical.get_hue();
@@ -23,31 +25,23 @@ namespace ColorSorter
             if (Controller::master.get_digital(pros::E_CONTROLLER_DIGITAL_R1))
             {
                 Intake::intake();
-                if (Presets::side == "blue")
+                if (Global::side == "blue")
                 {
                     // If disk is red
                     if (hue < 40.0 && proximity > 200)
                     {
-                        cout << "-------------------- Found RED..." << endl;
-                        
-                        // found = true;
-                        // pros::delay(1500);
-                        // Intake::hold();
+                        cout << "Found RED ring" << endl;
+                        found = true;
 
-                        // pros::delay(100);
-                        // Intake::intake();
+                        startPos = Intake::intakeMotor.get_position();
                     }
                 }
-                else if (Presets::side == "red")
+                else if (Global::side == "red")
                 {
                     // If disk is blue
-                    if (150.0 < hue) // 180
-                    {
-                        pros::delay(1500);
-                        Intake::hold();
-                        pros::delay(100);
-                        Intake::intake();
-                    }
+                    // if (150.0 < hue)
+                    // {
+                    // }
                 }
             }
             else if (Controller::master.get_digital(pros::E_CONTROLLER_DIGITAL_L1))
@@ -59,23 +53,13 @@ namespace ColorSorter
                 Intake::hold();
             }
 
-            // if (found) {
-            //     int initPos = Intake::intakeMotor.get_position();
-            //     while ((Intake::intakeMotor.get_position() - initPos) < 600){}
-            //     Intake::hold();
-            //     pros::delay(200);
-            //     found = false;
-            // }
-
-            // Check value equalities to avoid overprinting
-            if (previous_hue != hue && previous_proximity != proximity)
+            if (found)
             {
-                cout << "Hue: " + to_string(hue) << " | " << "Proximity: " + to_string(proximity) << endl;
-                previous_hue = hue;
-                previous_proximity = proximity;
+                if (abs(startPos - Intake::intakeMotor.get_position())) {
+                    
+                }
             }
 
-            // Clock
             pros::delay(10);
         }
     }

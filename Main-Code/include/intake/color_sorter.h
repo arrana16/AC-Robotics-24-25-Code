@@ -5,6 +5,7 @@ using namespace std;
 
 namespace ColorSorter
 {
+    extern double targetDelta = 114;
     extern pros::Optical optical;
     extern void sortTaskFunc(void *param);
 
