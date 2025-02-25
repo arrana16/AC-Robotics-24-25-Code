@@ -5,9 +5,8 @@ using namespace std;
 
 namespace ColorSorter
 {
-    extern double targetDelta = 114;
     extern pros::Optical optical;
-    extern void sortTaskFunc(void *param);
+    extern void sortTaskFunc(int *intake, bool *sort);
 
     extern int previous_hue;
     extern int previous_proximity;

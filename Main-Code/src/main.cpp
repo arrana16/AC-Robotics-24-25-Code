@@ -22,6 +22,9 @@ bool closed = false;
 
 bool doinkerState = false;
 
+int intakeState = 2;
+bool colorSort = true;
+
 void on_center_button()
 {
 }
@@ -29,7 +32,7 @@ void on_center_button()
 void initialize()
 {
 	pros::lcd::initialize();
-	pros::lcd::register_btn1_cb(on_center_button);
+	// pros::lcd::register_btn1_cb(on_center_button);
 	Drivetrain::chassis.calibrate();
 
 	// Lift state task
@@ -40,8 +43,13 @@ void initialize()
             Lift::liftMove(liftAngle);
 			pros::delay(10);
 		} });
+	
+	pros::Task intakeControlTask([] {
+		ColorSorter::sortTaskFunc(&intakeState, &colorSort);
+	});
 
-	// autonomous();
+	autonomous();
+	// pros::lcd::initialize();
 }
 
 void disabled() {}
@@ -50,41 +58,46 @@ void competition_initialize() {}
 
 void autonomous()
 {
+
+	Drivetrain::chassis.setPose(0, 0, 0);
+	// Drivetrain::chassis.turnToHeading(90, 1000);
+	// Drivetrain::chassis.moveToPoint(48, 48, 1500)
+	Drivetrain::chassis.moveToPoint(0, 36, 1500);
 	// WP AUTO LEFT
 
-	liftAngle = 420;
-	pros::delay(200);
-	Drivetrain::chassis.setPose(-54.8, 16.5, 180);
-	Intake::intakeMotor.move(90);
-	pros::delay(500);
-	Intake::intakeMotor.move(-30);
-	pros::delay(200);
-	Intake::intakeMotor.move(0);
+	// liftAngle = 420;
+	// pros::delay(200);
+	// Drivetrain::chassis.setPose(-54.8, 16.5, 180);
+	// Intake::intakeMotor.move(90);
+	// pros::delay(500);
+	// Intake::intakeMotor.move(-30);
+	// pros::delay(200);
+	// Intake::intakeMotor.move(0);
 
-	Drivetrain::chassis.moveToPoint(-54.8, 11, 1000);
-	Drivetrain::chassis.turnToPoint(-70, -4, 1000);
-	Drivetrain::chassis.waitUntilDone();
-	liftAngle = 1200;
-	pros::delay(500);
-	liftAngle = 362;
-	Drivetrain::chassis.turnToPoint(-23, 24, 1000, {.forwards = false});
-	Drivetrain::chassis.moveToPoint(-23, 24, 1700, {
-													   .forwards = false,
-													   .maxSpeed = 60,
-												   });
-	Drivetrain::chassis.waitUntilDone();
-	Clamp::close();
-	pros::delay(300);
-	Drivetrain::chassis.turnToPoint(-23.6, 52.5, 1000);
-	Intake::intakeMotor.move(127);
-	Drivetrain::chassis.moveToPoint(-23.6, 57, 1000, {.maxSpeed = 60});
-	Drivetrain::chassis.waitUntilDone();
-	pros::delay(750);
-	Intake::intakeMotor.move(0);
-	Drivetrain::chassis.turnToPoint(-15, 24, 1000);
-	Drivetrain::chassis.moveToPoint(-15, 30, 1500, {.maxSpeed = 80});
-	Drivetrain::chassis.waitUntilDone();
-	liftAngle = 850;
+	// Drivetrain::chassis.moveToPoint(-54.8, 11, 1000);
+	// Drivetrain::chassis.turnToPoint(-70, -4, 1000);
+	// Drivetrain::chassis.waitUntilDone();
+	// liftAngle = 1200;
+	// pros::delay(500);
+	// liftAngle = 362;
+	// Drivetrain::chassis.turnToPoint(-23, 24, 1000, {.forwards = false});
+	// Drivetrain::chassis.moveToPoint(-23, 24, 1700, {
+	// 												   .forwards = false,
+	// 												   .maxSpeed = 60,
+	// 											   });
+	// Drivetrain::chassis.waitUntilDone();
+	// Clamp::close();
+	// pros::delay(300);
+	// Drivetrain::chassis.turnToPoint(-23.6, 52.5, 1000);
+	// Intake::intakeMotor.move(127);
+	// Drivetrain::chassis.moveToPoint(-23.6, 57, 1000, {.maxSpeed = 60});
+	// Drivetrain::chassis.waitUntilDone();
+	// pros::delay(750);
+	// Intake::intakeMotor.move(0);
+	// Drivetrain::chassis.turnToPoint(-15, 24, 1000);
+	// Drivetrain::chassis.moveToPoint(-15, 30, 1500, {.maxSpeed = 80});
+	// Drivetrain::chassis.waitUntilDone();
+	// liftAngle = 850;
 
 	// WP AUTO RIGHT
 
@@ -218,10 +231,23 @@ void autonomous()
 
 void opcontrol()
 {
-	pros::Task sortTask(ColorSorter::sortTaskFunc);
+	// pros::Task sortTask(ColorSorter::sortTaskFunc);
+
+	pros::Task ([] {
+		while (true){
+			cout << "Chassis Position - X: " << Drivetrain::chassis.getPose().x 
+     << " Y: " << Drivetrain::chassis.getPose().y 
+     << " Theta: " << Drivetrain::chassis.getPose().theta << endl;
+			pros::delay(100);
+		}
+	});
 
 	while (true)
 	{
+// 		pros::lcd::print(0, "X: %.2f", Drivetrain::chassis.getPose().x);
+// pros::lcd::print(1, "Y: %.2f", Drivetrain::chassis.getPose().y);
+// pros::lcd::print(2, "Theta: %.2f", Drivetrain::chassis.getPose().theta);
+// pros::lcd::print(3, "---");
 		int left = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
 		int right = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
 		int y = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
@@ -229,20 +255,20 @@ void opcontrol()
 
 		if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1))
 		{
-			Intake::intake();
+			intakeState = 0;
 		}
 		else
 		{
-			Intake::hold();
+			intakeState = 2;
 		}
 
 		if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1))
 		{
-			Intake::outtake();
+			intakeState = 1;
 		}
 		else if (!master.get_digital(pros::E_CONTROLLER_DIGITAL_R1))
 		{
-			Intake::hold();
+			intakeState = 2;
 		}
 
 		// if (master.get_digital(pros::E_CONTROLLER_DIGITAL_X))
@@ -332,8 +358,7 @@ void opcontrol()
 		Lift::liftMove(liftAngle);
 
 		lasty = y;
-
-		pros::lcd::print(0, "X: %d", Lift::liftRot.get_position());
+  // Add a separator line to ensure updates are visible
 
 		pros::delay(20);
 	}

@@ -9,7 +9,7 @@ namespace Intake
     // Function to intake the object
     void intake()
     {
-        intakeMotor.move(115);
+        intakeMotor.move(127);
     }
 
     // Function to outtake the object
