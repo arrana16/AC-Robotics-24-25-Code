@@ -28,4 +28,5 @@ namespace Auton
     extern void priority1Red();
     extern void priority2();
     extern void priority3();
+    extern void skills(int *intake, int *liftAngle);
 }

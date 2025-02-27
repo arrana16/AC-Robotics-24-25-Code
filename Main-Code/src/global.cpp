@@ -2,5 +2,5 @@
 
 namespace Global
 {
-    string side = "blue";
+    string side = "red";
 }

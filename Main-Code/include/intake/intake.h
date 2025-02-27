@@ -5,6 +5,7 @@
 namespace Intake
 {
     extern pros::Motor intakeMotor;
+    extern pros::Motor intakeMotor2;
     
     extern void intake();
     extern void outtake();

@@ -23,7 +23,7 @@ bool closed = false;
 bool doinkerState = false;
 
 int intakeState = 2;
-bool colorSort = true;
+bool colorSort = false;
 
 void on_center_button()
 {
@@ -41,7 +41,7 @@ void initialize()
 		while(true)
 		{
             Lift::liftMove(liftAngle);
-			pros::delay(10);
+			pros::delay(30);
 		} });
 	
 	pros::Task intakeControlTask([] {
@@ -58,175 +58,7 @@ void competition_initialize() {}
 
 void autonomous()
 {
-
-	Drivetrain::chassis.setPose(0, 0, 0);
-	// Drivetrain::chassis.turnToHeading(90, 1000);
-	// Drivetrain::chassis.moveToPoint(48, 48, 1500)
-	Drivetrain::chassis.moveToPoint(0, 36, 1500);
-	// WP AUTO LEFT
-
-	// liftAngle = 420;
-	// pros::delay(200);
-	// Drivetrain::chassis.setPose(-54.8, 16.5, 180);
-	// Intake::intakeMotor.move(90);
-	// pros::delay(500);
-	// Intake::intakeMotor.move(-30);
-	// pros::delay(200);
-	// Intake::intakeMotor.move(0);
-
-	// Drivetrain::chassis.moveToPoint(-54.8, 11, 1000);
-	// Drivetrain::chassis.turnToPoint(-70, -4, 1000);
-	// Drivetrain::chassis.waitUntilDone();
-	// liftAngle = 1200;
-	// pros::delay(500);
-	// liftAngle = 362;
-	// Drivetrain::chassis.turnToPoint(-23, 24, 1000, {.forwards = false});
-	// Drivetrain::chassis.moveToPoint(-23, 24, 1700, {
-	// 												   .forwards = false,
-	// 												   .maxSpeed = 60,
-	// 											   });
-	// Drivetrain::chassis.waitUntilDone();
-	// Clamp::close();
-	// pros::delay(300);
-	// Drivetrain::chassis.turnToPoint(-23.6, 52.5, 1000);
-	// Intake::intakeMotor.move(127);
-	// Drivetrain::chassis.moveToPoint(-23.6, 57, 1000, {.maxSpeed = 60});
-	// Drivetrain::chassis.waitUntilDone();
-	// pros::delay(750);
-	// Intake::intakeMotor.move(0);
-	// Drivetrain::chassis.turnToPoint(-15, 24, 1000);
-	// Drivetrain::chassis.moveToPoint(-15, 30, 1500, {.maxSpeed = 80});
-	// Drivetrain::chassis.waitUntilDone();
-	// liftAngle = 850;
-
-	// WP AUTO RIGHT
-
-	// pros::delay(2200);
-	// liftAngle = 420;
-	// pros::delay(200);
-	// Drivetrain::chassis.setPose(-54.8, -16.5, 0);
-	// Intake::intakeMotor.move(90);
-	// pros::delay(500);
-	// Intake::intakeMotor.move(0);
-	// pros::delay(150);
-	// Intake::intakeMotor.move(-30);
-	// pros::delay(200);
-	// Intake::intakeMotor.move(0);
-
-	//     Drivetrain::chassis.moveToPoint(-54.8, -11, 1000);
-	//     Drivetrain::chassis.turnToPoint(-70, 4, 1000);
-	// 	Drivetrain::chassis.waitUntilDone();
-	// 	liftAngle = 1200;
-	// 	pros::delay(500);
-	// 	liftAngle = 362;
-	// 	Drivetrain::chassis.turnToPoint(-23, -24, 1000, { .forwards = false});
-	// 	Drivetrain::chassis.moveToPoint(-23, -24, 1700, {.forwards = false, .maxSpeed = 60,});
-	// 	Drivetrain::chassis.waitUntilDone();
-	// 	Clamp::close();
-	// 	pros::delay(300);
-	// 	Drivetrain::chassis.turnToPoint(-23.6, -52.5, 1000);
-	// 	Intake::intakeMotor.move(127);
-	// 	Drivetrain::chassis.moveToPoint(-23.6, -57, 1000, {.maxSpeed = 60});
-	// 	Drivetrain::chassis.waitUntilDone();
-	// 	pros::delay(750);
-	// 	Intake::intakeMotor.move(0);
-	// 	Drivetrain::chassis.turnToPoint(-15, -24, 1000);
-	// 	Drivetrain::chassis.moveToPoint(-15, -30, 1500, {.maxSpeed = 80});
-	// 	Drivetrain::chassis.waitUntilDone();
-	// 	liftAngle = 850;
-
-	// SKILLS AUTO
-	// Drivetrain::chassis.setPose(-53, 0, -90);
-	// liftAngle = 420;
-	// pros::delay(200);
-	// Intake::intakeMotor.move(90);
-	// pros::delay(500);
-	// Intake::intakeMotor.move(-30);
-	// pros::delay(200);
-	// Intake::intakeMotor.move(0);
-
-	// liftAngle = 1200;
-	// pros::delay(500);
-	// liftAngle = 362;
-	// pros::delay(500);
-
-	// Drivetrain::chassis.turnToPoint(-44, 24, 1000, {.forwards = false});
-	// Drivetrain::chassis.moveToPoint(-44, 24, 1500, {.forwards = false, .maxSpeed = 50});
-
-	// Drivetrain::chassis.waitUntilDone();
-	// Clamp::close();
-
-	// Drivetrain::chassis.turnToPoint(-44, 64, 1000);
-	// Drivetrain::chassis.waitUntilDone();
-	// Intake::intakeMotor.move(127);
-	// Drivetrain::chassis.moveToPoint(-44, 64, 1000, {.maxSpeed = 60});
-
-	// Drivetrain::chassis.turnToPoint(-58, 62, 1000, {.forwards = false});
-	// Drivetrain::chassis.waitUntilDone();
-	// Intake::intakeMotor.move(127);
-	// Drivetrain::chassis.moveToPoint(-58, 60, 1000, {.forwards = false, .maxSpeed = 50});
-
-	// Drivetrain::chassis.waitUntilDone();
-	// Clamp::open();
-	// Drivetrain::chassis.turnToPoint(-49, 47, 1000);
-	// Drivetrain::chassis.moveToPoint(-49, 47, 1000, {.maxSpeed = 60});
-
-	// Drivetrain::chassis.turnToPoint(-49, -24, 1000, {.forwards = false});
-	// Drivetrain::chassis.moveToPoint(-49, -24, 2500, {.forwards = false, .maxSpeed = 60});
-	// Drivetrain::chassis.waitUntilDone();
-	// Clamp::close();
-
-	// Drivetrain::chassis.turnToPoint(-49, -64, 1000);
-	// Drivetrain::chassis.waitUntilDone();
-	// Intake::intakeMotor.move(127);
-	// Drivetrain::chassis.moveToPoint(-49, -64, 1000, {.maxSpeed = 60});
-
-	// Drivetrain::chassis.turnToPoint(-58, -62, 1000, {.forwards = false});
-	// Drivetrain::chassis.waitUntilDone();
-	// Drivetrain::chassis.moveToPoint(-58, -60, 1000, {.forwards = false, .maxSpeed = 50});
-
-	// Drivetrain::chassis.waitUntilDone();
-	// Intake::intakeMotor.move(0);
-	// Clamp::open();
-
-	// Drivetrain::chassis.turnToPoint(30, -20, 1000);
-	// Intake::intakeMotor.move(127);
-	// Drivetrain::chassis.moveToPoint(30, -20, 5000, {.maxSpeed = 60});
-	// Drivetrain::chassis.waitUntilDone();
-	// pros::delay(300);
-	// Intake::intakeMotor.move(0);
-
-	// Drivetrain::chassis.turnToPoint(48, 2, 1000, {.forwards = false});
-	// Drivetrain::chassis.moveToPoint(48, 2, 5000, {.forwards = false, .maxSpeed = 60});
-	// Drivetrain::chassis.waitUntilDone();
-	// Clamp::close();
-	// Intake::intakeMotor.move(127);
-	// pros::delay(800);
-	// Intake::intakeMotor.move(0);
-	// Drivetrain::chassis.turnToPoint(41, 2, 1000, {.forwards = false});
-	// Drivetrain::chassis.moveToPoint(41, 2, 2000, {.forwards = false, .maxSpeed = 60});
-	// Clamp::open();
-
-	// Drivetrain::chassis.turnToPoint(54, -12.5, 1000);
-	// Drivetrain::chassis.moveToPoint(54, -12.5, 5000, {.maxSpeed = 60});
-
-	// Drivetrain::chassis.turnToPoint(64, -61, 1000);
-	// Drivetrain::chassis.moveToPoint(64, -61, 5000, {.maxSpeed = 60});
-
-	// Drivetrain::chassis.turnToPoint(54, 6, 1000);
-	// Drivetrain::chassis.moveToPoint(54, 6, 5000, {.maxSpeed = 60});
-
-	// Drivetrain::chassis.turnToPoint(64, 61, 1000);
-	// Drivetrain::chassis.moveToPoint(64, 61, 5000, {.maxSpeed = 60});
-
-	// std::string a = "a";
-	// // Auton::safeAWPRight();
-	// Drivetrain::chassis.setPose(0, 0, 0);
-	// Drivetrain::chassis.turnToHeading(90, 1000);
-	// // Drivetrain::chassis.setPose(0, 0, 0);
-
-	// Drivetrain::chassis.moveToPoint(0, 96, 5000);
-	// Drivetrain::chassis.waitUntilDone();
+	Skills::skills(&intakeState, &liftAngle);
 }
 
 void opcontrol()

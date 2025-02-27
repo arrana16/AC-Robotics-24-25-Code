@@ -45,6 +45,7 @@
 #include "auton/awp_safe.h"
 #include "auton/mogo_rush.h"
 #include "auton/ring_side.h"
+#include "auton/skills.h"
 
 /**
  * If you find doing pros::Motor() to be tedious and you'd prefer just to do

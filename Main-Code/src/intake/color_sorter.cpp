@@ -27,7 +27,14 @@ namespace ColorSorter
                 Intake::intake();
             } else if (*intake == 1) {
                 Intake::outtake();
-            } else {
+            } else if (*intake == 3) {
+                Intake::intakeMotor.move(90);
+                Intake::intakeMotor2.move(90);
+            } else if (*intake == 4) {
+                Intake::intakeMotor.move(-40);
+                Intake::intakeMotor2.move(-40);
+            }
+            else {
                 Intake::hold();
             }
             hue = (int)optical.get_hue();
@@ -47,7 +54,7 @@ namespace ColorSorter
 
             if (found) {
                 startPos = Intake::intakeMotor.get_position();
-                while (Intake::intakeMotor.get_position() - startPos > targetDelta && intake) {
+                while (Intake::intakeMotor.get_position() - startPos > targetDelta && *intake == 0) {
                     Intake::intake();
                 }
                 if (*intake == 0) {
@@ -94,7 +101,7 @@ namespace ColorSorter
             //     }
             // }
 
-            // pros::delay(10);
+            pros::delay(30);
         }
     }
 }

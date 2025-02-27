@@ -438,83 +438,83 @@ namespace Auton
     void skills()
     {
         using namespace Drivetrain;
-
+        
         // Wall Stake Task
-        pros::Task task{[=]
-                        {
-                            pros::delay(9300);
-                            int currentTime = pros::millis();
-                            while (pros::millis() - currentTime < 3000)
-                            {
-                                Lift::liftMove(320);
-                            }
-                        }};
+        // pros::Task task{[=]
+        //                 {
+        //                     pros::delay(9300);
+        //                     int currentTime = pros::millis();
+        //                     while (pros::millis() - currentTime < 3000)
+        //                     {
+        //                         Lift::liftMove(320);
+        //                     }
+        //                 }};
 
-        // Alliance Stake
-        chassis.setPose(-66, 0, -90);
-        chassis.waitUntilDone();
-        Intake::intake();
-        pros::delay(300);
-        Intake::hold();
+        // // Alliance Stake
+        // chassis.setPose(-66, 0, -90);
+        // chassis.waitUntilDone();
+        // Intake::intake();
+        // pros::delay(300);
+        // Intake::hold();
 
-        // MOGO Clamp
-        chassis.moveToPoint(-61, -16, 1000);
-        chassis.turnToHeading(-60, 1000);
-        chassis.moveToPoint(-44, -25, 1000, {.forwards = false});
-        chassis.waitUntilDone();
-        Clamp::close();
+        // // MOGO Clamp
+        // chassis.moveToPoint(-61, -16, 1000);
+        // chassis.turnToHeading(-60, 1000);
+        // chassis.moveToPoint(-44, -25, 1000, {.forwards = false});
+        // chassis.waitUntilDone();
+        // Clamp::close();
 
-        // First 3 Rings
-        chassis.moveToPoint(-21, -22, 1000);
-        chassis.moveToPoint(24, -47, 4000);
-        chassis.moveToPoint(24, -24, 1000);
-        chassis.moveToPoint(0, -57, 1500);
-        chassis.waitUntilDone();
-        pros::delay(500);
-        Intake::intakeMotor.move(100);
+        // // First 3 Rings
+        // chassis.moveToPoint(-21, -22, 1000);
+        // chassis.moveToPoint(24, -47, 4000);
+        // chassis.moveToPoint(24, -24, 1000);
+        // chassis.moveToPoint(0, -57, 1500);
+        // chassis.waitUntilDone();
+        // pros::delay(500);
+        // Intake::intakeMotor.move(100);
 
-        // Do wall stake
-        chassis.turnToHeading(0, 500);
-        Lift::liftMotors.move(100);
+        // // Do wall stake
+        // chassis.turnToHeading(0, 500);
+        // Lift::liftMotors.move(100);
 
-        // Get next 4 rings
-        chassis.moveToPoint(-23.884, -47.62, 1000);
-        chassis.moveToPoint(-47.1, -47.388, 800);
-        chassis.moveToPoint(-58.94, -47.388, 500);
-        chassis.moveToPoint(-47.797, -58.996, 500);
-        Intake::intakeMotor.move(100);
+        // // Get next 4 rings
+        // chassis.moveToPoint(-23.884, -47.62, 1000);
+        // chassis.moveToPoint(-47.1, -47.388, 800);
+        // chassis.moveToPoint(-58.94, -47.388, 500);
+        // chassis.moveToPoint(-47.797, -58.996, 500);
+        // Intake::intakeMotor.move(100);
 
-        // Turn towards positive corner and drop off mobile goal
-        chassis.turnToHeading(50, 500);
-        chassis.moveToPoint(-66.37, -66.193, 1000, {.forwards = false});
-        Clamp::open();
+        // // Turn towards positive corner and drop off mobile goal
+        // chassis.turnToHeading(50, 500);
+        // chassis.moveToPoint(-66.37, -66.193, 1000, {.forwards = false});
+        // Clamp::open();
 
-        // Get center ring
-        chassis.moveToPoint(0, 0, 2000);
-        Intake::intakeMotor.move(100);
+        // // Get center ring
+        // chassis.moveToPoint(0, 0, 2000);
+        // Intake::intakeMotor.move(100);
 
-        // Get G2R
-        chassis.turnToPoint(-47.565, 23.884, 1000);
-        chassis.moveToPoint(-38.51, 19.938, 1000);
-        chassis.turnToHeading(120, 800);
-        chassis.moveToPoint(-40.136, 20.17, 1000, {.forwards = false, .maxSpeed = 10});
-        Clamp::close();
+        // // Get G2R
+        // chassis.turnToPoint(-47.565, 23.884, 1000);
+        // chassis.moveToPoint(-38.51, 19.938, 1000);
+        // chassis.turnToHeading(120, 800);
+        // chassis.moveToPoint(-40.136, 20.17, 1000, {.forwards = false, .maxSpeed = 10});
+        // Clamp::close();
 
-        // Get next 3 rings
-        chassis.moveToPoint(-23.188, 22.259, 1000);
-        chassis.moveToPoint(23.708, 46.636, 1000);
-        chassis.moveToPoint(0, 59, 1000);
-        Intake::intakeMotor.move(100);
+        // // Get next 3 rings
+        // chassis.moveToPoint(-23.188, 22.259, 1000);
+        // chassis.moveToPoint(23.708, 46.636, 1000);
+        // chassis.moveToPoint(0, 59, 1000);
+        // Intake::intakeMotor.move(100);
 
-        // Do wallstake
-        chassis.turnToHeading(180, 1000);
-        //?????????????????
-        Lift::liftMove(80);
+        // // Do wallstake
+        // chassis.turnToHeading(180, 1000);
+        // //?????????????????
+        // Lift::liftMove(80);
 
-        // Get next 4 rings
-        chassis.moveToPoint(-24, 47, 1000);
-        chassis.moveToPoint(-47, 47, 1000);
-        // chassis.moveT
+        // // Get next 4 rings
+        // chassis.moveToPoint(-24, 47, 1000);
+        // chassis.moveToPoint(-47, 47, 1000);
+        // // chassis.moveT
     }
 
     void priority1Blue()
