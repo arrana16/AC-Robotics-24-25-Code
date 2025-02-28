@@ -1,22 +1,34 @@
 #pragma once
 
-#include "lemlib/api.hpp"
+#include "main.h"
 
 namespace Drivetrain
 {
-    // Motor groups
-    pros::MotorGroup left_motors;
-    pros::MotorGroup right_motors;
+    // Left and right motors
+    extern pros::MotorGroup leftMotors;
+    extern pros::MotorGroup rightMotors;
 
-    // Drivetrain
-    lemlib::Drivetrain drivetrain;
-    lemlib::Chassis chassis;
+    // Drivetrain with controller settings
+    extern lemlib::Drivetrain drivetrain;
+    extern lemlib::ControllerSettings lateralController;
+    extern lemlib::ControllerSettings angularController;
 
-    // Odometry
-    pros::Imu imu;
-    lemlib::OdomSensors sensors;
-    pros::Rotation horizontal_encoder;
-    pros::adi::Encoder vertical_encoder;
-    lemlib::TrackingWheel horizontal_tracking_wheel;
-    lemlib::TrackingWheel vertical_tracking_wheel;
+    // Odometry and sensors
+    extern pros::Imu imu;
+    extern lemlib::OdomSensors sensors;
+    extern pros::Rotation horizontalEncoder;
+    extern pros::Rotation verticalEncoder;
+    extern lemlib::TrackingWheel horizontalTrackingWheel;
+    extern lemlib::TrackingWheel verticalTrackingWheel;
+
+    // Chassis for driving
+    extern lemlib::Chassis chassis;
+}
+
+/*
+ * Structure to store simple movement tasks limited to simpleDrive right now
+ */
+namespace Movement
+{
+    extern void simpleDrive(int &y, int &turn);
 }

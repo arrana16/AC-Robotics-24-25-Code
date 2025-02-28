@@ -15,31 +15,37 @@
 #ifndef _PROS_MAIN_H_
 #define _PROS_MAIN_H_
 
-/**
- * If defined, some commonly used enums will have preprocessor macros which give
- * a shorter, more convenient naming pattern. If this isn't desired, simply
- * comment the following line out.
- *
- * For instance, E_CONTROLLER_MASTER has a shorter name: CONTROLLER_MASTER.
- * E_CONTROLLER_MASTER is pedantically correct within the PROS styleguide, but
- * not convenient for most student programmers.
- */
 #define PROS_USE_SIMPLE_NAMES
-
-/**
- * If defined, C++ literals will be available for use. All literals are in the
- * pros::literals namespace.
- *
- * For instance, you can do `4_mtr = 50` to set motor 4's target velocity to 50
- */
 #define PROS_USE_LITERALS
 
-#include "api.h"
-
-/**
- * You should add more #includes here
+/*
+ * Library includes
  */
-//#include "okapi/api.hpp"
+#include "api.h"
+#include "lemlib/api.hpp"
+#include "robodash/api.h"
+
+#include "util/timer.h"
+#include "util/coordinates.h"
+#include "pid/pid.h"
+#include "drivetrain/drivetrain.h"
+#include "controller/controller.h"
+#include "auton/auton.h"
+#include "intake/intake.h"
+#include "clamp/clamp.h"
+#include "doinker.h"
+#include "lift.h"
+#include "intake/color_sorter.h"
+#include "state/state_manager.h"
+#include "global.h"
+
+/*
+ * Auton files
+ */
+#include "auton/awp_safe.h"
+#include "auton/mogo_rush.h"
+#include "auton/ring_side.h"
+#include "auton/skills.h"
 
 /**
  * If you find doing pros::Motor() to be tedious and you'd prefer just to do
@@ -59,13 +65,14 @@
  * button press in opcontrol() for testing purposes).
  */
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
-void autonomous(void);
-void initialize(void);
-void disabled(void);
-void competition_initialize(void);
-void opcontrol(void);
+    void autonomous(void);
+    void initialize(void);
+    void disabled(void);
+    void competition_initialize(void);
+    void opcontrol(void);
 #ifdef __cplusplus
 }
 #endif
@@ -74,7 +81,7 @@ void opcontrol(void);
 /**
  * You can add C++-only headers here
  */
-//#include <iostream>
+#include <iostream>
 #endif
 
-#endif  // _PROS_MAIN_H_
+#endif // _PROS_MAIN_H_
