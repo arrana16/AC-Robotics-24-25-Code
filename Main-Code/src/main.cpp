@@ -45,10 +45,10 @@ void initialize()
 		} });
 	
 	pros::Task intakeControlTask([] {
-		ColorSorter::sortTaskFunc(&intakeState, &colorSort);
+		ColorSorter::sortTaskFunc(&intakeState, &colorSort, &liftAngle);
 	});
 
-	autonomous();
+	// autonomous();
 	// pros::lcd::initialize();
 }
 
@@ -65,14 +65,6 @@ void opcontrol()
 {
 	// pros::Task sortTask(ColorSorter::sortTaskFunc);
 
-	pros::Task ([] {
-		while (true){
-			cout << "Chassis Position - X: " << Drivetrain::chassis.getPose().x 
-     << " Y: " << Drivetrain::chassis.getPose().y 
-     << " Theta: " << Drivetrain::chassis.getPose().theta << endl;
-			pros::delay(100);
-		}
-	});
 
 	while (true)
 	{
@@ -86,9 +78,11 @@ void opcontrol()
 		int rot = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
 
 		if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1))
-		{
-			intakeState = 0;
-		}
+{
+			if (!(400 < liftAngle && liftAngle < 470) || intakeState != 3) {  // Only update if not in loading zone or not currently auto-loading
+				intakeState = 0;
+			}
+}
 		else
 		{
 			intakeState = 2;

@@ -20,7 +20,7 @@ namespace Drivetrain
     // lateral PID controller
 lemlib::ControllerSettings lateralController(8, // proportional gain (kP)
     0, // integral gain (kI)
-    5, // derivative gain (kD)
+    10, // derivative gain (kD)
     3, // anti windup
     1, // small error range, in inches
     100, // small error range timeout, in milliseconds
