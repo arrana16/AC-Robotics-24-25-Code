@@ -8,6 +8,8 @@
 #include <string>
 #include <vector>
 
+using namespace Drivetrain;
+
 pros::Controller master(pros::E_CONTROLLER_MASTER);
 pros::Controller partner(pros::E_CONTROLLER_PARTNER);
 
@@ -27,13 +29,14 @@ bool colorSort = false;
 
 void on_center_button()
 {
+	
 }
 
 void initialize()
 {
+	// Calibrate
 	pros::lcd::initialize();
-	// pros::lcd::register_btn1_cb(on_center_button);
-	Drivetrain::chassis.calibrate();
+	chassis.calibrate();
 
 	// Lift state task
 	pros::Task liftControlTask([]
@@ -43,13 +46,11 @@ void initialize()
             Lift::liftMove(liftAngle);
 			pros::delay(30);
 		} });
-	
-	pros::Task intakeControlTask([] {
-		ColorSorter::sortTaskFunc(&intakeState, &colorSort);
-	});
+
+	pros::Task intakeControlTask([]
+								 { ColorSorter::sortTaskFunc(&intakeState, &colorSort); });
 
 	autonomous();
-	// pros::lcd::initialize();
 }
 
 void disabled() {}
@@ -65,21 +66,21 @@ void opcontrol()
 {
 	// pros::Task sortTask(ColorSorter::sortTaskFunc);
 
-	pros::Task ([] {
+	pros::Task([]
+			   {
 		while (true){
 			cout << "Chassis Position - X: " << Drivetrain::chassis.getPose().x 
      << " Y: " << Drivetrain::chassis.getPose().y 
      << " Theta: " << Drivetrain::chassis.getPose().theta << endl;
 			pros::delay(100);
-		}
-	});
+		} });
 
 	while (true)
 	{
-// 		pros::lcd::print(0, "X: %.2f", Drivetrain::chassis.getPose().x);
-// pros::lcd::print(1, "Y: %.2f", Drivetrain::chassis.getPose().y);
-// pros::lcd::print(2, "Theta: %.2f", Drivetrain::chassis.getPose().theta);
-// pros::lcd::print(3, "---");
+		// 		pros::lcd::print(0, "X: %.2f", Drivetrain::chassis.getPose().x);
+		// pros::lcd::print(1, "Y: %.2f", Drivetrain::chassis.getPose().y);
+		// pros::lcd::print(2, "Theta: %.2f", Drivetrain::chassis.getPose().theta);
+		// pros::lcd::print(3, "---");
 		int left = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
 		int right = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
 		int y = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
@@ -190,7 +191,7 @@ void opcontrol()
 		Lift::liftMove(liftAngle);
 
 		lasty = y;
-  // Add a separator line to ensure updates are visible
+		// Add a separator line to ensure updates are visible
 
 		pros::delay(20);
 	}
