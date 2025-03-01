@@ -8,8 +8,9 @@ namespace Drivetrain
     extern pros::MotorGroup leftMotors;
     extern pros::MotorGroup rightMotors;
 
-    // Drivetrain with controller settings
     extern lemlib::Drivetrain drivetrain;
+
+    // Lateral and angular PIDs
     extern lemlib::ControllerSettings lateralController;
     extern lemlib::ControllerSettings angularController;
 
@@ -21,6 +22,6 @@ namespace Drivetrain
     extern lemlib::TrackingWheel horizontalTrackingWheel;
     extern lemlib::TrackingWheel verticalTrackingWheel;
 
-    // Chassis for driving
+    // Chassis
     extern lemlib::Chassis chassis;
 }
