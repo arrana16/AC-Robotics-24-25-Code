@@ -1,5 +1,5 @@
 #include "controller/controller.h"
-#include "main.h";
+#include "main.h"
 
 namespace Skills {
     void skills(int *intake, int *liftAngle) {

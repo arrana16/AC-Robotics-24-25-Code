@@ -15,6 +15,6 @@ namespace MOGORush
     8. Touch ladder
     */
 
-    extern void blue();
-    extern void red();
+    extern void blue(int *liftAngle, int *intake);
+    extern void red(int *liftAngle, int *intake);
 }

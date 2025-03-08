@@ -58,11 +58,51 @@ void competition_initialize() {}
 
 void autonomous()
 {
-	Skills::skills(&intakeState, &liftAngle);
+	colorSort = true;
+	// Skills::skills(&intakeState, &liftAngle);
+
+	// MOGORush::red(&liftAngle, &intakeState);
+	Auton::newAWP2(&liftAngle, &intakeState	);
+	// Drivetrain::chassis.setPose(-52, -24, -90);
+	// Drivetrain::chassis.moveToPoint(-24, -24, 1700, {.forwards = false, .maxSpeed = 50});
+	// Drivetrain::chassis.waitUntilDone();
+	// Clamp::close();
+	// pros::delay(300);
+	// intakeState = 0;
+
+	// Drivetrain::chassis.turnToPoint(-14.5, -8, 1000);
+	// Drivetrain::chassis.waitUntilDone();
+	// intakeState = 2;
+
+	// Drivetrain::chassis.moveToPoint(-14.5, -8, 1000, {.maxSpeed = 60});
+	// Drivetrain::chassis.swingToHeading(83, DriveSide::RIGHT, 1000);
+
+	// Drivetrain::chassis.waitUntilDone();
+	// Doinker::down();
+	// pros::delay(300);
+
+	// Drivetrain::chassis.swingToPoint(-28, -30, DriveSide::RIGHT, 1000, {.forwards = false});
+	// Drivetrain::chassis.moveToPoint(-28, -30, 1000, {.forwards = false, .maxSpeed = 60});
+	// Drivetrain::chassis.waitUntilDone();
+	// Doinker::up();
+	// Drivetrain::chassis.turnToPoint(-25, -15, 1000);
+	// Drivetrain::chassis.waitUntilDone();
+	// intakeState = 0;
+	// Drivetrain::chassis.moveToPoint(-25, -15, 1000, {.maxSpeed = 60});
+	// Drivetrain::chassis.waitUntilDone();
+
+	// Drivetrain::chassis.moveToPoint(-25, -30, 1000, {.maxSpeed = 60});
+	// Drivetrain::chassis.turnToPoint(-25, -46, 1000);
+	// Drivetrain::chassis.moveToPoint(-25, -46, 1000, {.maxSpeed = 60});
+	// Drivetrain::chassis.waitUntilDone();
+
+
+	;
 }
 
 void opcontrol()
 {
+	colorSort = false;
 	// pros::Task sortTask(ColorSorter::sortTaskFunc);
 
 
@@ -128,9 +168,13 @@ void opcontrol()
 			}
 		}
 
-		if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2))
-		{
-			liftAngle = 440;
+		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L2))
+		{	
+			if (liftAngle == 436){
+				liftAngle = 550;
+			} else {
+				liftAngle = 436;
+			}
 		}
 		else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2))
 		{

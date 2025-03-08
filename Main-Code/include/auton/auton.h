@@ -22,6 +22,8 @@ namespace Auton
     extern void fiveRingLeft();
     extern void safeAWPRight();
     extern void safeAWPLeft();
+    extern void newAWP(int *liftAngle, int *intake);
+    extern void newAWP2(int *liftAngle, int *intake);
 
     // New autons
     extern void priority1Blue();
